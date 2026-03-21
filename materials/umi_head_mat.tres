@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bops4vwqf6our"]
+
+[ext_resource type="Shader" uid="uid://b67ymhltrn7tq" path="res://shaders/face.gdshader" id="1_enk6f"]
+[ext_resource type="Texture2D" uid="uid://clngm46kjwkbo" path="res://assets/meshes/umi/umi3_skin_layer.png" id="2_droqg"]
+[ext_resource type="Texture2D" uid="uid://cq5c8l0mqxqkq" path="res://assets/meshes/umi/umi_eyes.png" id="3_uc0lq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_enk6f")
+shader_parameter/texture_base = ExtResource("2_droqg")
+shader_parameter/texture_overlay = ExtResource("3_uc0lq")
+shader_parameter/offset_x = -0.014999997685520003
+shader_parameter/offset_y = 0.0
+shader_parameter/white_threshold = 0.526000024985

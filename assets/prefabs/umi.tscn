@@ -1,0 +1,247 @@
+[gd_scene format=3 uid="uid://c6issutkordeq"]
+
+[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/player.gd" id="1_5w5vk"]
+[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/3d_godot_robot.gd" id="3_3wkc1"]
+[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/own_invisible.gd" id="3_cpyjp"]
+[ext_resource type="Script" uid="uid://db0f6joldlpdj" path="res://scripts/mesh_frames.gd" id="3_j5sw6"]
+[ext_resource type="Script" uid="uid://yc8itc3jyphg" path="res://scripts/animation_handler.gd" id="4_ixf42"]
+[ext_resource type="PackedScene" uid="uid://klb3aq6ioiuu" path="res://assets/meshes/umi/idle/umi_idle_0.glb" id="4_rkxmf"]
+[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/camera.gd" id="4_vhcd7"]
+[ext_resource type="PackedScene" uid="uid://cnwehnsuxt66d" path="res://assets/meshes/umi/idle/umi_idle_1.glb" id="5_rn12b"]
+[ext_resource type="PackedScene" uid="uid://c4w8x25t4ef8l" path="res://assets/meshes/umi/idle/umi_idle_2.glb" id="6_rkxmf"]
+[ext_resource type="PackedScene" uid="uid://qvohnrpxxaf6" path="res://assets/meshes/umi/walk/umi_walk_0.glb" id="7_j5sw6"]
+[ext_resource type="PackedScene" uid="uid://1hkfgmydaj4y" path="res://assets/meshes/umi/walk/umi_walk_1.glb" id="8_dfwlv"]
+[ext_resource type="PackedScene" uid="uid://drpweilty22q1" path="res://assets/meshes/umi/walk/umi_walk_2.glb" id="9_kwyxx"]
+[ext_resource type="PackedScene" uid="uid://m3bg7iglu0go" path="res://assets/meshes/umi/walk/umi_walk_3.glb" id="10_wt6il"]
+[ext_resource type="PackedScene" uid="uid://d2fdxufgystlu" path="res://assets/meshes/umi/run/umi_run_0.glb" id="11_5w5vk"]
+[ext_resource type="PackedScene" uid="uid://cynbl5oaebs4x" path="res://assets/meshes/umi/run/umi_run_1.glb" id="12_3wkc1"]
+[ext_resource type="PackedScene" uid="uid://bb3h7m884rv75" path="res://assets/meshes/umi/run/umi_run_2.glb" id="13_ixf42"]
+[ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
+radius = 0.57177734
+height = 3.8655913
+
+[sub_resource type="Animation" id="Animation_p0ofl"]
+resource_name = "Fall"
+
+[sub_resource type="Animation" id="Animation_vhcd7"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UMI/AnimationHandler/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_8t6fy"]
+resource_name = "Jump"
+
+[sub_resource type="Animation" id="Animation_nxl0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UMI/AnimationHandler/Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UMI/AnimationHandler/Walk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UMI/AnimationHandler/Run:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_4xxmc"]
+resource_name = "Run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UMI/AnimationHandler/Run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_j5sw6"]
+resource_name = "Run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UMI/AnimationHandler/Walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2lyn"]
+_data = {
+&"Fall": SubResource("Animation_p0ofl"),
+&"Idle": SubResource("Animation_vhcd7"),
+&"Jump": SubResource("Animation_8t6fy"),
+&"RESET": SubResource("Animation_nxl0p"),
+&"Run": SubResource("Animation_4xxmc"),
+&"Walk": SubResource("Animation_j5sw6")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8t6fy"]
+properties/0/path = NodePath("AnimationPlayer:current_animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("PlayerNick/Nickname:text")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("UMI:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir")]
+collision_mask = 3
+script = ExtResource("1_5w5vk")
+_body = NodePath("UMI")
+_spring_arm_offset = NodePath("SpringArmOffset/SpringArm3D")
+_facing_dir = NodePath("SpringArmOffset/SpringArm3D/Camera3D/facing")
+metadata/_custom_type_script = "uid://c2si8gkbnde0c"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=837938989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12604235, -0.29171103, 0.01)
+shape = SubResource("CapsuleShape3D_vhcd7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1682181383]
+libraries/ = SubResource("AnimationLibrary_q2lyn")
+autoplay = &"Idle"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=66264453]
+replication_config = SubResource("SceneReplicationConfig_8t6fy")
+
+[node name="SpringArmOffset" type="Node3D" parent="." unique_id=451633209]
+
+[node name="SpringArm3D" type="Node3D" parent="SpringArmOffset" unique_id=656480498]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmOffset/SpringArm3D" unique_id=1513442865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.843272, -0.33863163)
+script = ExtResource("4_vhcd7")
+
+[node name="facing" type="Node3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=204086816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0969281)
+
+[node name="PlayerNick" type="Node3D" parent="." unique_id=714271620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9719919, 0)
+
+[node name="Nickname" type="Label3D" parent="PlayerNick" unique_id=907737059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97037, 0)
+billboard = 1
+outline_modulate = Color(0, 0, 0, 0.301961)
+text = "player name test"
+
+[node name="OwnInvisible" type="Node" parent="." unique_id=1437334408 node_paths=PackedStringArray("own_node")]
+script = ExtResource("3_cpyjp")
+own_node = NodePath("../UMI")
+
+[node name="UMI" type="Node3D" parent="." unique_id=872676472 node_paths=PackedStringArray("_character", "animation_player")]
+script = ExtResource("3_3wkc1")
+_character = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationHandler" type="Node3D" parent="UMI" unique_id=541509744]
+script = ExtResource("4_ixf42")
+
+[node name="Idle" type="Node3D" parent="UMI/AnimationHandler" unique_id=984391309]
+script = ExtResource("3_j5sw6")
+frame = -1
+metadata/_custom_type_script = "uid://db0f6joldlpdj"
+
+[node name="umi_idle_0" parent="UMI/AnimationHandler/Idle" unique_id=930193102 instance=ExtResource("4_rkxmf")]
+visible = false
+
+[node name="umi_idle_1" parent="UMI/AnimationHandler/Idle" unique_id=1565169095 instance=ExtResource("5_rn12b")]
+visible = false
+
+[node name="umi_idle_2" parent="UMI/AnimationHandler/Idle" unique_id=1959569567 instance=ExtResource("6_rkxmf")]
+
+[node name="Walk" type="Node3D" parent="UMI/AnimationHandler" unique_id=320994887]
+script = ExtResource("3_j5sw6")
+frame = -1
+metadata/_custom_type_script = "uid://db0f6joldlpdj"
+
+[node name="umi_walk_0" parent="UMI/AnimationHandler/Walk" unique_id=377683007 instance=ExtResource("7_j5sw6")]
+visible = false
+
+[node name="umi_walk_1" parent="UMI/AnimationHandler/Walk" unique_id=737436881 instance=ExtResource("8_dfwlv")]
+visible = false
+
+[node name="umi_walk_2" parent="UMI/AnimationHandler/Walk" unique_id=1982918413 instance=ExtResource("9_kwyxx")]
+visible = false
+
+[node name="umi_walk_3" parent="UMI/AnimationHandler/Walk" unique_id=1837533665 instance=ExtResource("10_wt6il")]
+visible = false
+
+[node name="Run" type="Node3D" parent="UMI/AnimationHandler" unique_id=443360210]
+script = ExtResource("3_j5sw6")
+frame = -1
+metadata/_custom_type_script = "uid://db0f6joldlpdj"
+
+[node name="umi_run_0" parent="UMI/AnimationHandler/Run" unique_id=1904710095 instance=ExtResource("11_5w5vk")]
+visible = false
+
+[node name="umi_run_1" parent="UMI/AnimationHandler/Run" unique_id=1532281293 instance=ExtResource("12_3wkc1")]
+visible = false
+
+[node name="umi_run_2" parent="UMI/AnimationHandler/Run" unique_id=393887294 instance=ExtResource("13_ixf42")]
+visible = false
+
+[node name="umi_run_3" parent="UMI/AnimationHandler/Run" unique_id=1511726600 instance=ExtResource("14_cpyjp")]
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1251212015]
+spot_angle = 180.0
