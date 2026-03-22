@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://3bncoxmw7lty" path="res://assets/prefabs/bed.tscn" id="10_2cyr1"]
 [ext_resource type="PackedScene" uid="uid://7bftqxnsi5w0" path="res://assets/prefabs/door.tscn" id="11_17fyk"]
 [ext_resource type="Material" uid="uid://i4bmk8hw1bii" path="res://materials/gotele_material.tres" id="13_38hno"]
+[ext_resource type="Texture2D" uid="uid://gpcpyimu1rp0" path="res://assets/meshes/house/floor/floor_texture.jpg" id="14_rr7fe"]
+[ext_resource type="Texture2D" uid="uid://bpur6iglbotfe" path="res://assets/meshes/house/floor/floor_texture_wooden.jpg" id="15_jpvw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8pwa"]
 
@@ -83,6 +85,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d3eak")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpvw8"]
+albedo_color = Color(0.646029, 0.646029, 0.646029, 1)
+albedo_texture = ExtResource("14_rr7fe")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icp6u"]
+albedo_texture = ExtResource("15_jpvw8")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
 
 [node name="house" type="Node3D" unique_id=1348941581]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
@@ -203,3 +216,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.322659, -5.901469, -16.470
 operation = 2
 size = Vector3(6.6513352, 13.658493, 2.007145)
 material = ExtResource("13_38hno")
+
+[node name="room_floor" type="CSGBox3D" parent="house_combiner" unique_id=1854638772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.998413, 0, -45.920002)
+size = Vector3(39.232742, 1, 23.752209)
+material = SubResource("StandardMaterial3D_jpvw8")
+
+[node name="floor" type="CSGBox3D" parent="house_combiner" unique_id=302317968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.471844, 0, -40.662544)
+size = Vector3(30.325764, 1, 85.62409)
+material = SubResource("StandardMaterial3D_icp6u")
+
+[node name="floor2" type="CSGBox3D" parent="house_combiner" unique_id=1032810326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.274435, 0, -70.58284)
+size = Vector3(49.930946, 1, 25.783516)
+material = SubResource("StandardMaterial3D_icp6u")

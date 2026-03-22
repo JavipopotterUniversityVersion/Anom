@@ -1,7 +1,12 @@
 [gd_scene format=4 uid="uid://f7b770a5bia6"]
 
+[ext_resource type="Texture2D" uid="uid://cjxsw2t3q5yn4" path="res://assets/meshes/house/door/bin_texture.jpg" id="1_myg88"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0sso"]
-albedo_color = Color(0.28695846, 0.29218352, 0.3410349, 1)
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+albedo_texture = ExtResource("1_myg88")
+uv1_scale = Vector3(4.56, 4.56, 4.56)
+uv1_offset = Vector3(-0.045, 0.965, 0)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hf2ts"]
 _surfaces = [{

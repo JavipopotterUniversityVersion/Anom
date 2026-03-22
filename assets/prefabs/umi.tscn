@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cynbl5oaebs4x" path="res://assets/meshes/umi/run/umi_run_1.glb" id="12_3wkc1"]
 [ext_resource type="PackedScene" uid="uid://bb3h7m884rv75" path="res://assets/meshes/umi/run/umi_run_2.glb" id="13_ixf42"]
 [ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
-[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/Anomaly/mark_handler.gd" id="18_tee1q"]
+[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/Anomaly/player_inputs.gd" id="18_tee1q"]
 [ext_resource type="PackedScene" uid="uid://qw7xeotl0k2a" path="res://assets/prefabs/mark.tscn" id="19_ef487"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
@@ -185,6 +185,10 @@ debug_shape_thickness = 1
 [node name="facing" type="Node3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=204086816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0969281)
 
+[node name="light" type="SpotLight3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1251212015]
+spot_range = 35.0
+spot_angle = 30.0
+
 [node name="PlayerNick" type="Node3D" parent="." unique_id=714271620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9719919, 0)
 
@@ -254,12 +258,13 @@ visible = false
 [node name="umi_run_3" parent="UMI/AnimationHandler/Run" unique_id=1511726600 instance=ExtResource("14_cpyjp")]
 visible = false
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1251212015]
-spot_angle = 180.0
-
-[node name="mark_handler" type="Node" parent="." unique_id=1803103782 node_paths=PackedStringArray("mark", "ray")]
+[node name="player_inputs" type="Node" parent="." unique_id=1803103782 node_paths=PackedStringArray("mark", "light", "ray")]
 script = ExtResource("18_tee1q")
-mark = NodePath("mark")
+mark = NodePath("mark_pivot")
+light = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/light")
 ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/raycast")
 
-[node name="mark" parent="mark_handler" unique_id=600274410 instance=ExtResource("19_ef487")]
+[node name="mark_pivot" type="Node3D" parent="player_inputs" unique_id=1130084135]
+
+[node name="mark" parent="player_inputs/mark_pivot" unique_id=600274410 instance=ExtResource("19_ef487")]
+transform = Transform3D(2.2222223, 0, 0, 0, -9.713642e-08, -2.2222223, 0, 2.2222223, -9.713642e-08, 0, 0, 0)
