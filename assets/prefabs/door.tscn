@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_7io3u"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_vy2yy"]
+[ext_resource type="Script" uid="uid://2ca80odb6ma2" path="res://scripts/Anomaly/trigger_area.gd" id="3_1j1lv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prn0d"]
 albedo_color = Color(0.52538514, 0.32271776, 0.1699095, 1)
@@ -146,45 +147,153 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_50bkd")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vy2yy"]
+size = Vector3(5.613037, 12.930664, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j1lv"]
+size = Vector3(5.491638, 12.912392, 2.9726563)
+
+[sub_resource type="Animation" id="Animation_1j1lv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collider/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vy2yy"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.6755161, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collider/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1j1lv"]
+_data = {
+&"RESET": SubResource("Animation_1j1lv"),
+&"open": SubResource("Animation_vy2yy")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1j1lv"]
+properties/0/path = NodePath(".:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("door:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("collider/CollisionShape3D:disabled")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="Door" type="Node3D" unique_id=924969253]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 
 [node name="door_frame" type="MeshInstance3D" parent="." unique_id=418694822]
-transform = Transform3D(0, 0, 3.203221, 0, 6.561132, 0, -0.43727052, 0, 0, 2.7799969, 6.456689, 9.461277)
+transform = Transform3D(0, 0, 3.203221, 0, 6.561132, 0, -0.43727052, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tpy31")
 skeleton = NodePath("")
 
-[node name="door" type="Node3D" parent="." unique_id=214211285]
+[node name="door" type="Node3D" parent="." unique_id=491410171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7441754, -0.5609751, 0)
 
-[node name="pomo" type="MeshInstance3D" parent="door" unique_id=2009994574]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="door" type="Node3D" parent="door" unique_id=214211285]
+
+[node name="pomo" type="MeshInstance3D" parent="door/door" unique_id=2009994574]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 0, 0)
 mesh = SubResource("ArrayMesh_cisky")
 skeleton = NodePath("")
 
-[node name="pomo_base" type="MeshInstance3D" parent="door" unique_id=1400150146]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="pomo_base" type="MeshInstance3D" parent="door/door" unique_id=1400150146]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 0, 0)
 mesh = SubResource("ArrayMesh_mvqm7")
 skeleton = NodePath("")
 
-[node name="wood" type="MeshInstance3D" parent="door" unique_id=293693495]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="wood" type="MeshInstance3D" parent="door/door" unique_id=293693495]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 0, 0)
 mesh = SubResource("ArrayMesh_uomrd")
 skeleton = NodePath("")
 
-[node name="door2" type="Node3D" parent="." unique_id=95125254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 19.258663)
+[node name="door2" type="Node3D" parent="door" unique_id=95125254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
-[node name="pomo" type="MeshInstance3D" parent="door2" unique_id=1487729507]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="pomo" type="MeshInstance3D" parent="door/door2" unique_id=1487729507]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_cisky")
 skeleton = NodePath("")
 
-[node name="pomo_base" type="MeshInstance3D" parent="door2" unique_id=1103255693]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="pomo_base" type="MeshInstance3D" parent="door/door2" unique_id=1103255693]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mvqm7")
 skeleton = NodePath("")
 
-[node name="wood" type="MeshInstance3D" parent="door2" unique_id=1412322400]
-transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0.029844284, 5.9542723, 9.600414)
+[node name="wood" type="MeshInstance3D" parent="door/door2" unique_id=1412322400]
+transform = Transform3D(0, 0, 0.24517791, 0, 0.7859103, 0, -0.053466585, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uomrd")
 skeleton = NodePath("")
+
+[node name="collider" type="StaticBody3D" parent="." unique_id=707278609]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collider" unique_id=2061292084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12072754, 0.04345703, 0)
+shape = SubResource("BoxShape3D_vy2yy")
+debug_color = Color(0.3702131, 0.48287898, 0.9872089, 0.41960785)
+
+[node name="trigger_area" type="Area3D" parent="." unique_id=652950826 node_paths=PackedStringArray("animation_player")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_1j1lv")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="collision" type="CollisionShape3D" parent="trigger_area" unique_id=537768968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038909912, 0.058757782, -0.12940979)
+shape = SubResource("BoxShape3D_1j1lv")
+debug_color = Color(0.43056032, 0.601042, 0, 0.18431373)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1072489276]
+libraries/ = SubResource("AnimationLibrary_1j1lv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1015473947]
+replication_config = SubResource("SceneReplicationConfig_1j1lv")

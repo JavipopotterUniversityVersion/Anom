@@ -31,6 +31,14 @@ ItemDatabase="*res://scripts/item_database.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[file_customization]
+
+folder_colors={
+"res://assets/meshes/": "gray",
+"res://assets/prefabs/": "teal",
+"res://assets/shaders/": "pink"
+}
+
 [input]
 
 move_left={
@@ -78,8 +86,13 @@ inventory={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
 ]
 }
+anomalize={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
-3d_physics/layer_1="player"
-3d_physics/layer_2="world"
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"

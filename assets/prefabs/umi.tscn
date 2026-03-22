@@ -146,6 +146,7 @@ properties/4/spawn = true
 properties/4/replication_mode = 1
 
 [node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir")]
+collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_5w5vk")
 _body = NodePath("UMI")
@@ -208,6 +209,7 @@ visible = false
 visible = false
 
 [node name="umi_idle_2" parent="UMI/AnimationHandler/Idle" unique_id=1959569567 instance=ExtResource("6_rkxmf")]
+visible = false
 
 [node name="Walk" type="Node3D" parent="UMI/AnimationHandler" unique_id=320994887]
 script = ExtResource("3_j5sw6")

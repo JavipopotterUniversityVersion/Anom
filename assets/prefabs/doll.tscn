@@ -3,26 +3,31 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyb4"]
 resource_name = "Material.008"
 cull_mode = 2
+albedo_color = Color(0.42114764, 0.3967973, 1.92523e-07, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6dma"]
 resource_name = "Material.002"
 cull_mode = 2
+albedo_color = Color(0.8223777, 0.74517727, 0.70688754, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mch2y"]
 resource_name = "Material.001"
 cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3a0o"]
 resource_name = "Material.004"
 cull_mode = 2
+albedo_color = Color(0.6362991, 0, 0.090414934, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtviv"]
 resource_name = "Material.005"
 cull_mode = 2
+albedo_color = Color(0.8235294, 0.74509805, 0.7058824, 1)
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y3af1"]

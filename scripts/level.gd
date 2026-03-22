@@ -62,15 +62,11 @@ func _add_player(id: int, player_info : Dictionary):
 
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	player.position = get_spawn_point()
+	player.position = Vector3.ZERO
 	players_container.add_child(player, true)
 
 	var nick = Network.players[id]["nick"]
 	player.nickname.text = nick
-
-func get_spawn_point() -> Vector3:
-	var spawn_point = Vector2.from_angle(randf() * 2 * PI) * 10 # spawn radius
-	return Vector3(spawn_point.x, 3, spawn_point.y)
 
 func _remove_player(id):
 	if not multiplayer.is_server() or not players_container.has_node(str(id)):
