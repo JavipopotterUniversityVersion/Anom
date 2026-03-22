@@ -104,6 +104,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sp2mt")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g38rj"]
+size = Vector3(2.3213196, 0.94409704, 5.8362045)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8v4m"]
 albedo_color = Color(0.8682029, 0.55972624, 0.40896738, 1)
 
@@ -139,6 +142,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1fw4h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5f0b"]
+size = Vector3(12.121704, 2.2807617, 6.060852)
+
 [node name="bed" type="Node3D" unique_id=1987173430]
 
 [node name="base" type="MeshInstance3D" parent="." unique_id=573192549]
@@ -154,6 +160,19 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_nlg54")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="base/pillow" unique_id=1356665439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.150723, 5.0352325, -19.580196)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="base/pillow/StaticBody3D" unique_id=752623905]
+shape = SubResource("BoxShape3D_g38rj")
+
 [node name="support" type="MeshInstance3D" parent="base" unique_id=1379861589]
 mesh = SubResource("ArrayMesh_206k7")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="base" unique_id=1155329779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5154, 3.7091188, -19.542809)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="base/StaticBody3D" unique_id=696357007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14038086, 0)
+shape = SubResource("BoxShape3D_o5f0b")

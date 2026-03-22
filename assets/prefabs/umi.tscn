@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cynbl5oaebs4x" path="res://assets/meshes/umi/run/umi_run_1.glb" id="12_3wkc1"]
 [ext_resource type="PackedScene" uid="uid://bb3h7m884rv75" path="res://assets/meshes/umi/run/umi_run_2.glb" id="13_ixf42"]
 [ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
+[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/Anomaly/mark_handler.gd" id="18_tee1q"]
+[ext_resource type="PackedScene" uid="uid://qw7xeotl0k2a" path="res://assets/prefabs/mark.tscn" id="19_ef487"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
 radius = 0.57177734
@@ -173,6 +175,13 @@ replication_config = SubResource("SceneReplicationConfig_8t6fy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.843272, -0.33863163)
 script = ExtResource("4_vhcd7")
 
+[node name="raycast" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1687371099]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -50, 0)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
 [node name="facing" type="Node3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=204086816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0969281)
 
@@ -247,3 +256,10 @@ visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1251212015]
 spot_angle = 180.0
+
+[node name="mark_handler" type="Node" parent="." unique_id=1803103782 node_paths=PackedStringArray("mark", "ray")]
+script = ExtResource("18_tee1q")
+mark = NodePath("mark")
+ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/raycast")
+
+[node name="mark" parent="mark_handler" unique_id=600274410 instance=ExtResource("19_ef487")]

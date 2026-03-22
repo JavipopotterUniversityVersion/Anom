@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://baai6xeahp3sc" path="res://assets/prefabs/entrance_table.tscn" id="9_00bt7"]
 [ext_resource type="PackedScene" uid="uid://3bncoxmw7lty" path="res://assets/prefabs/bed.tscn" id="10_2cyr1"]
 [ext_resource type="PackedScene" uid="uid://7bftqxnsi5w0" path="res://assets/prefabs/door.tscn" id="11_17fyk"]
+[ext_resource type="Material" uid="uid://i4bmk8hw1bii" path="res://materials/gotele_material.tres" id="13_38hno"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8pwa"]
 
@@ -83,144 +84,122 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d3eak")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3xjb5"]
-size = Vector3(4.7147827, 17.517822, 29.188492)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tv745"]
-size = Vector3(5.771408, 17.56311, 58.69113)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_loypw"]
-size = Vector3(26.525417, 17.517822, 16.179323)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7kuh6"]
-size = Vector3(14.609266, 17.517822, 27.263947)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_18x5n"]
-size = Vector3(3.75099, 17.517822, 3.481842)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lu0xx"]
-size = Vector3(4.671236, 17.517822, 24.50547)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_in87o"]
-size = Vector3(23.149094, 17.517822, 18.426306)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fyqcp"]
-size = Vector3(22.978844, 17.517822, 23.869404)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nkhqc"]
-size = Vector3(29.883831, 17.517822, 23.869404)
-
 [node name="house" type="Node3D" unique_id=1348941581]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
 
 [node name="doll" parent="." unique_id=91175468 instance=ExtResource("1_dvltn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.252232, 2.0174465, -16.614468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.252232, 2.0174465, -46.935417)
 
 [node name="tv_stand" parent="." unique_id=1227149468 instance=ExtResource("2_xls7h")]
-transform = Transform3D(3.4307172e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.4307172e-07, 1.0393653, 3.4951391, -40.98806)
+transform = Transform3D(3.4307172e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.4307172e-07, 1.0393653, 3.4951391, -71.30901)
 
 [node name="tv" parent="." unique_id=1498314598 instance=ExtResource("3_38hno")]
-transform = Transform3D(3.4307172e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.4307172e-07, 1.0393653, 3.4951391, -40.98806)
+transform = Transform3D(3.4307172e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.4307172e-07, 1.0393653, 3.4951391, -71.30901)
 
 [node name="short_table" parent="." unique_id=1583540651 instance=ExtResource("4_rr7fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.342006, 0, -1.3952186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3420067, 0, -31.716173)
 
 [node name="bin" parent="." unique_id=609334439 instance=ExtResource("5_jpvw8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.796158, 1.0729907, -10.165135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.79616, 1.0729907, -40.486088)
 
 [node name="ambienter" type="MeshInstance3D" parent="." unique_id=1590168864]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.342006, 0, -1.3952186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3420067, 0, -31.716173)
 mesh = SubResource("ArrayMesh_0rk1n")
 skeleton = NodePath("")
 
 [node name="table_night" parent="." unique_id=1308366400 instance=ExtResource("6_icp6u")]
-transform = Transform3D(-1.4950082e-07, 0, 1.71009, 0, 3.4201794, 0, -3.42018, 0, -7.475041e-08, 62.301094, 3.4508362, -16.78651)
+transform = Transform3D(-1.4950082e-07, 0, 1.71009, 0, 3.4201794, 0, -3.42018, 0, -7.475041e-08, 62.301098, 3.4508362, -47.10746)
 
 [node name="drawer" parent="." unique_id=1896688596 instance=ExtResource("7_r78la")]
-transform = Transform3D(1.949434, 0, 0, 0, 5.7850504, 0, 0, 0, 5.3222694, 40.475697, 5.8129544, -14.034779)
+transform = Transform3D(1.9494342, 0, 0, 0, 5.785051, 0, 0, 0, 5.3222694, 40.4757, 5.8129544, -44.355732)
 
 [node name="structure" type="MeshInstance3D" parent="." unique_id=23424985]
-transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, 3.0340567, 3.838539e-05, 9.746866)
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, 3.0340567, 3.838539e-05, -20.574087)
+visible = false
 mesh = SubResource("ArrayMesh_hsr44")
 skeleton = NodePath("")
 
 [node name="table" parent="." unique_id=283562911 instance=ExtResource("8_wmhwa")]
-transform = Transform3D(1.7054458, 0, 0, 0, 1, 0, 0, 0, 1, 16.066437, 0, -15.513923)
+transform = Transform3D(1.7054458, 0, 0, 0, 1, 0, 0, 0, 1, 16.066437, 0, -45.834877)
 
 [node name="entrance_table" parent="." unique_id=728906100 instance=ExtResource("9_00bt7")]
-transform = Transform3D(1.3124979, 0, 0, 0, 2.6943889, 0, 0, 0, 2.3317661, 0.1826973, 0, -5.8876457)
+transform = Transform3D(1.312498, 0, 0, 0, 2.6943889, 0, 0, 0, 2.3317661, 0.1826973, 0, -36.2086)
 
 [node name="bed" parent="." unique_id=1987173430 instance=ExtResource("10_2cyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.85999, 0, -24.612316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.85999, 0, -54.93327)
 
 [node name="Door" parent="." unique_id=924969253 instance=ExtResource("11_17fyk")]
-transform = Transform3D(-4.4512955e-08, 0, -1, 0, 1.0396119, 0, 1.0183376, 0, -4.3711392e-08, 23.82521, 6.7451015, -32.207996)
+transform = Transform3D(-4.4512955e-08, 0, -1, 0, 1.0396119, 0, 1.0183376, 0, -4.3711392e-08, 23.825212, 6.7451015, -62.528954)
 
 [node name="Door2" parent="." unique_id=539087225 instance=ExtResource("11_17fyk")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 42.389, 6.745, -27.14)
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, 42.389004, 6.7450004, -57.460953)
 
 [node name="Door3" parent="." unique_id=515195871 instance=ExtResource("11_17fyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.055, 6.745, 1.618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.055, 6.7450004, -28.702953)
 
 [node name="Door4" parent="." unique_id=832677947 instance=ExtResource("11_17fyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0550003, 6.745001, 29.705666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0550005, 6.745001, -0.61528736)
 
-[node name="Colliders" type="Node3D" parent="." unique_id=915013878]
+[node name="house_combiner" type="CSGCombiner3D" parent="." unique_id=1767426008]
+operation = 2
+use_collision = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Colliders" unique_id=608737114]
+[node name="house_base" type="CSGBox3D" parent="house_combiner" unique_id=1095501976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.08242, 12.533266, -41.164013)
+size = Vector3(69.83119, 25.41565, 86.78528)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=1406013567]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7178345, 8.258913, 15.4859085)
-shape = SubResource("BoxShape3D_3xjb5")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D" type="CSGBox3D" parent="house_combiner/house_base" unique_id=332467367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.763132, -3.2663908, -22.53828)
+operation = 2
+size = Vector3(24.745827, 18.92865, 38.35737)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=1323528410]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9946976, 8.281557, -28.55112)
-shape = SubResource("BoxShape3D_tv745")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D2" type="CSGBox3D" parent="house_combiner/house_base" unique_id=1678966956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.947775, -3.2663908, 3.2805824)
+operation = 2
+size = Vector3(8.376541, 18.92865, 17.603516)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=1170028640]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.214996, 8.258913, 15.4859085)
-shape = SubResource("BoxShape3D_3xjb5")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D3" type="CSGBox3D" parent="house_combiner/house_base" unique_id=259602873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.056652, -3.2663908, 26.549513)
+operation = 2
+size = Vector3(6.437519, 18.92865, 27.563179)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=221763949]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.38087, 8.258913, -6.4944954)
-shape = SubResource("BoxShape3D_loypw")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D4" type="CSGBox3D" parent="house_combiner/house_base" unique_id=1230581127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.036495, -5.901469, 26.287252)
+operation = 2
+size = Vector3(6.2245674, 13.658493, 34.494698)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=230129724]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.284752, 8.258913, -14.288429)
-shape = SubResource("BoxShape3D_7kuh6")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D5" type="CSGBox3D" parent="house_combiner/house_base" unique_id=925748944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3606262, -3.2663908, -21.374805)
+operation = 2
+size = Vector3(21.464222, 18.92865, 8.954235)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=538813177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.235226, 8.258913, -0.55020523)
-shape = SubResource("BoxShape3D_loypw")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D6" type="CSGBox3D" parent="house_combiner/house_base" unique_id=192511037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.941269, -3.2663908, -7.019142)
+operation = 2
+size = Vector3(25.307777, 18.92865, 18.846746)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=2020005729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.61072, 8.258913, -8.335651)
-shape = SubResource("BoxShape3D_18x5n")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D7" type="CSGBox3D" parent="house_combiner/house_base" unique_id=580263823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.817287, -3.2663908, -7.8186607)
+operation = 2
+size = Vector3(1.4950352, 18.92865, 17.247715)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=1653143659]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.015236, 8.258913, -18.847466)
-shape = SubResource("BoxShape3D_lu0xx")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D8" type="CSGBox3D" parent="house_combiner/house_base" unique_id=1421089564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.057184, -5.901469, -21.369831)
+operation = 2
+size = Vector3(1.8851266, 13.658493, 6.517952)
+material = ExtResource("13_38hno")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=2139600931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.776306, 8.258913, -36.48783)
-shape = SubResource("BoxShape3D_in87o")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
-
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=929383509]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.392536, 8.258913, -48.580902)
-shape = SubResource("BoxShape3D_fyqcp")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
-
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Colliders/StaticBody3D" unique_id=2070246811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.328003, 8.258913, -64.5328)
-shape = SubResource("BoxShape3D_nkhqc")
-debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+[node name="CSGBox3D9" type="CSGBox3D" parent="house_combiner/house_base" unique_id=1219422775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.322659, -5.901469, -16.470234)
+operation = 2
+size = Vector3(6.6513352, 13.658493, 2.007145)
+material = ExtResource("13_38hno")

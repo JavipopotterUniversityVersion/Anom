@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i4bmk8hw1bii"]
+
+[ext_resource type="Texture2D" uid="uid://cnmaf4kex5lyk" path="res://assets/meshes/house/door/gotele.jpg" id="1_rpnyu"]
+
+[resource]
+albedo_texture = ExtResource("1_rpnyu")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true

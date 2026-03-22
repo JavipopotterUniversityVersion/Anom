@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qw7xeotl0k2a"]
+
+[ext_resource type="Texture2D" uid="uid://cw430x1rim3dk" path="res://andicon.png" id="1_gqfvt"]
+
+[node name="mark" type="Decal" unique_id=600274410]
+transform = Transform3D(2.2222223, 0, 0, 0, 0.2105582, -2.2122245, 0, 2.2122245, 0.2105582, 0, 0, 0)
+size = Vector3(2, 1.5094299, 1.828125)
+texture_albedo = ExtResource("1_gqfvt")
