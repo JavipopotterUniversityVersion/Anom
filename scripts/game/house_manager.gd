@@ -2,7 +2,7 @@ extends Node3D
 class_name HouseManager
 
 @export var anomalies:Array[Script]
-@export var furniture:Array[Node3D]
+@export var furniture:Array[Furniture]
 
 var current_anomaly
 

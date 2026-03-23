@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dxdqfa1jaj12w"]
 
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_jv1ao"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="2_6p64w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o3vg"]
 albedo_color = Color(0.62152386, 0.62152386, 0.6215238, 1)
@@ -41,10 +42,12 @@ shadow_mesh = SubResource("ArrayMesh_m77du")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jv1ao"]
 size = Vector3(4.8980656, 4.8980656, 4.8980656)
 
-[node name="table" type="MeshInstance3D" unique_id=283562911]
+[node name="table" type="MeshInstance3D" unique_id=283562911 node_paths=PackedStringArray("colliders")]
 transform = Transform3D(1.7054458, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_w2gjn")
 skeleton = NodePath("")
+script = ExtResource("2_6p64w")
+colliders = [NodePath("StaticBody3D/CollisionShape3D")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1234613632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016651154, 2.360694, -1.9068427)

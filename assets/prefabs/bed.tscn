@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dru8mboisb1j3" path="res://assets/meshes/house/bed/tela_texture.jpg" id="1_arneg"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_g38rj"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_hahah"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11445"]
 albedo_texture = ExtResource("1_arneg")
@@ -159,7 +160,9 @@ shadow_mesh = SubResource("ArrayMesh_1fw4h")
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5f0b"]
 size = Vector3(12.121704, 2.2807617, 6.060852)
 
-[node name="bed" type="Node3D" unique_id=1987173430]
+[node name="bed" type="Node3D" unique_id=1987173430 node_paths=PackedStringArray("colliders")]
+script = ExtResource("1_hahah")
+colliders = [NodePath("base/pillow/StaticBody3D/CollisionShape3D"), NodePath("base/StaticBody3D/CollisionShape3D")]
 
 [node name="base" type="MeshInstance3D" parent="." unique_id=573192549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.040565, 0, 20.227892)

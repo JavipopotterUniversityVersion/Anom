@@ -103,7 +103,7 @@ uv1_triplanar = true
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
 anomalies = Array[Script]([ExtResource("2_r78la")])
-furniture = [NodePath("table_night"), NodePath("bed"), NodePath("hall_door"), NodePath("entrance_table"), NodePath("bin"), NodePath("ambienter"), NodePath("tv")]
+furniture = [NodePath("tv"), NodePath("table"), NodePath("bed")]
 
 [node name="doll" parent="." unique_id=91175468 instance=ExtResource("1_dvltn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.252232, 2.0174465, -46.935417)

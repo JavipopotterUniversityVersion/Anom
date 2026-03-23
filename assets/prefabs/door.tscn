@@ -260,6 +260,7 @@ properties/3/replication_mode = 1
 [node name="Door" type="Node3D" unique_id=924969253]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 metadata/BLOCKED = false
+metadata/COLLIDERS = [NodePath("collider/CollisionShape3D"), NodePath("trigger_area/collision")]
 
 [node name="door_frame" type="MeshInstance3D" parent="." unique_id=418694822]
 transform = Transform3D(0, 0, 3.203221, 0, 6.561132, 0, -0.43727052, 0, 0, 0, 0, 0)
