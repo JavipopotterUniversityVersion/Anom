@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bb2wkn6uumq3g"]
 
 [ext_resource type="PackedScene" uid="uid://bgrcvbk3brr8j" path="res://assets/prefabs/doll.tscn" id="1_dvltn"]
-[ext_resource type="Script" uid="uid://cux6uhcaj0moo" path="res://scripts/Anomaly/house_manager.gd" id="1_xls7h"]
+[ext_resource type="Script" uid="uid://cux6uhcaj0moo" path="res://scripts/anomaly/house_manager.gd" id="1_xls7h"]
 [ext_resource type="PackedScene" uid="uid://bktfqoq26o8xf" path="res://assets/prefabs/tv_stand.tscn" id="2_xls7h"]
 [ext_resource type="PackedScene" uid="uid://c6s0vp5sc3glc" path="res://assets/prefabs/tv.tscn" id="3_38hno"]
 [ext_resource type="PackedScene" uid="uid://dhyosl7b0ict7" path="res://assets/prefabs/short_table.tscn" id="4_rr7fe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://i4bmk8hw1bii" path="res://materials/gotele_material.tres" id="13_38hno"]
 [ext_resource type="Texture2D" uid="uid://gpcpyimu1rp0" path="res://assets/meshes/house/floor/floor_texture.jpg" id="14_rr7fe"]
 [ext_resource type="Texture2D" uid="uid://bpur6iglbotfe" path="res://assets/meshes/house/floor/floor_texture_wooden.jpg" id="15_jpvw8"]
+[ext_resource type="PackedScene" uid="uid://chgjcckdgqik7" path="res://scenes/level/room_button.tscn" id="16_icp6u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8pwa"]
 
@@ -97,9 +98,10 @@ albedo_texture = ExtResource("15_jpvw8")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 
-[node name="house" type="Node3D" unique_id=1348941581]
+[node name="house" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("doll")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
+doll = NodePath("doll")
 
 [node name="doll" parent="." unique_id=91175468 instance=ExtResource("1_dvltn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.252232, 2.0174465, -46.935417)
@@ -142,17 +144,15 @@ transform = Transform3D(1.312498, 0, 0, 0, 2.6943889, 0, 0, 0, 2.3317661, 0.1826
 [node name="bed" parent="." unique_id=1987173430 instance=ExtResource("10_2cyr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.85999, 0, -54.93327)
 
-[node name="Door" parent="." unique_id=924969253 instance=ExtResource("11_17fyk")]
+[node name="hall_door" parent="." unique_id=924969253 instance=ExtResource("11_17fyk")]
 transform = Transform3D(-4.4512955e-08, 0, -1, 0, 1.0396119, 0, 1.0183376, 0, -4.3711392e-08, 23.825212, 6.7451015, -62.528954)
 
-[node name="Door2" parent="." unique_id=539087225 instance=ExtResource("11_17fyk")]
+[node name="room_door" parent="." unique_id=539087225 instance=ExtResource("11_17fyk")]
 transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, 42.389004, 6.7450004, -57.460953)
 
-[node name="Door3" parent="." unique_id=515195871 instance=ExtResource("11_17fyk")]
+[node name="main_door" parent="." unique_id=515195871 instance=ExtResource("11_17fyk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.055, 6.7450004, -28.702953)
-
-[node name="Door4" parent="." unique_id=832677947 instance=ExtResource("11_17fyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0550005, 6.745001, -0.61528736)
+metadata/BLOCKED = true
 
 [node name="house_combiner" type="CSGCombiner3D" parent="." unique_id=1767426008]
 operation = 2
@@ -182,9 +182,9 @@ size = Vector3(6.437519, 18.92865, 27.563179)
 material = ExtResource("13_38hno")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="house_combiner/house_base" unique_id=1230581127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.036495, -5.901469, 26.287252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.036495, -5.901471, 12.886284)
 operation = 2
-size = Vector3(6.2245674, 13.658493, 34.494698)
+size = Vector3(6.2245674, 13.658493, 7.692766)
 material = ExtResource("13_38hno")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="house_combiner/house_base" unique_id=925748944]
@@ -231,3 +231,12 @@ material = SubResource("StandardMaterial3D_icp6u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.274435, 0, -70.58284)
 size = Vector3(49.930946, 1, 25.783516)
 material = SubResource("StandardMaterial3D_icp6u")
+
+[node name="Elevator" parent="." unique_id=1866584181 node_paths=PackedStringArray("door") instance=ExtResource("16_icp6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.881442, -20.069698)
+door = NodePath("../main_door")
+
+[node name="CollisionShape3D" parent="Elevator/room_area" parent_id_path=PackedInt32Array(1866584181, 1102215840) index="0" unique_id=1048140805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.784454, -0.85565186, -0.80963135)
+
+[editable path="Elevator"]

@@ -1,22 +1,39 @@
-[gd_scene format=4]
+[gd_scene format=3 uid="uid://chgjcckdgqik7"]
 
-[ext_resource type="Script" path="res://scripts/room_button.gd" id="1_room_button"]
+[ext_resource type="Script" uid="uid://bug6o5wqpw5hh" path="res://scripts/multiplayer/room_button.gd" id="1_enkpa"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_icon"]
-font_size = 48
-font_color = Color(1, 1, 1, 1)
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_jg0i1"]
+radius = 1.2588217
 
-[node name="RoomButton" type="Node3D"]
-script = ExtResource("1_room_button")
+[sub_resource type="SphereMesh" id="SphereMesh_jg0i1"]
 
-[node name="InteractIcon" type="Label3D" parent="."]
-position = Vector3(0, 1.5, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg0i1"]
+size = Vector3(6.5689087, 12.107056, 13.490112)
+
+[node name="elevator_button" type="Area3D" unique_id=63760329 node_paths=PackedStringArray("room")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_enkpa")
+room = NodePath("room_area")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1954030639]
+shape = SubResource("SphereShape3D_jg0i1")
+debug_color = Color(0.711642, 0.32641023, 0.8997452, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2035249245]
+mesh = SubResource("SphereMesh_jg0i1")
+
+[node name="InteractIcon" type="Label3D" parent="." unique_id=1936472831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9725598, 0)
+billboard = 1
 text = "[E]"
 font_size = 48
 outline_size = 4
-outline_modulate = Color(0, 0, 0, 1)
-billboard = 1
-visible = false
-label_settings = SubResource("LabelSettings_icon")
+
+[node name="room_area" type="Area3D" parent="." unique_id=1102215840]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_area" unique_id=1048140805]
+shape = SubResource("BoxShape3D_jg0i1")
+debug_color = Color(0.5638601, 0.47875887, 0.7625103, 0.41960785)

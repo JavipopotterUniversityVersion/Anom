@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bglwdpf2mf7g0"]
+[gd_scene format=3 uid="uid://bglwdpf2mf7g0"]
 
-[ext_resource type="Script" uid="uid://bi0mlil0a0e5i" path="res://scripts/inventory_slot_ui.gd" id="1_5k8m7"]
+[ext_resource type="Script" uid="uid://bi0mlil0a0e5i" path="res://scripts/multiplayer/inventory_slot_ui.gd" id="1_5k8m7"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_r7xw6"]
 

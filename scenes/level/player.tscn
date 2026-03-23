@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://cffjduipbb3s5"]
 
-[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/player.gd" id="1_tdh26"]
+[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/multiplayer/player.gd" id="1_tdh26"]
 [ext_resource type="Texture2D" uid="uid://bdg48m6l86q8i" path="res://assets/meshes/player/3DGodotRobot_GodotPalette.png" id="1_w11jc"]
-[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/3d_godot_robot.gd" id="2_mexc5"]
-[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/camera.gd" id="8_2l1sl"]
+[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/multiplayer/3d_godot_robot.gd" id="2_mexc5"]
+[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/multiplayer/camera.gd" id="8_2l1sl"]
 [ext_resource type="Material" uid="uid://bvnc5y6f6anlm" path="res://materials/black_outline.tres" id="8_rtsbg"]
-[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/own_invisible.gd" id="9_pnmcy"]
+[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/multiplayer/own_invisible.gd" id="9_pnmcy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mx45w"]
 radius = 0.35796

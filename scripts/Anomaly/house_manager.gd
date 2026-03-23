@@ -3,8 +3,11 @@ class_name HouseManager
 
 @export var anomalies:Array[Script]
 
-@export var window:MeshInstance3D
-@export var main_door:MeshInstance3D
+@export var doll:Node3D
+@export var main_door:Node3D
+@export var room_door:Node3D
+@export var drawer:Node3D
+@export var table_night:Node3D
 
 var current_anomaly
 

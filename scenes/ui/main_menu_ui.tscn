@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx7mq8t8hjn7q"]
+[gd_scene format=3 uid="uid://bx7mq8t8hjn7q"]
 
 [ext_resource type="FontFile" uid="uid://diapabmalpcrj" path="res://assets/fonts/Kurland.ttf" id="1_font"]
-[ext_resource type="Script" uid="uid://wfj6b11wkwx2" path="res://scripts/main_menu_ui.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://wfj6b11wkwx2" path="res://scripts/multiplayer/main_menu_ui.gd" id="2_script"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_npnbc"]
 color = Color(0, 0, 0, 0)

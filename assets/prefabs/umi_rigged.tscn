@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://l7proo8rrcyx"]
 
-[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/player.gd" id="1_j4ebh"]
+[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/multiplayer/player.gd" id="1_j4ebh"]
 [ext_resource type="Material" uid="uid://bops4vwqf6our" path="res://materials/umi_head_mat.tres" id="1_ox5v5"]
-[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/own_invisible.gd" id="1_vhcd7"]
-[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/3d_godot_robot.gd" id="2_8t6fy"]
-[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/camera.gd" id="4_vhcd7"]
+[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/multiplayer/own_invisible.gd" id="1_vhcd7"]
+[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/multiplayer/3d_godot_robot.gd" id="2_8t6fy"]
+[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/multiplayer/camera.gd" id="4_vhcd7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
 radius = 0.57177734

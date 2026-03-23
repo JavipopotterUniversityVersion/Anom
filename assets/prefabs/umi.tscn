@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://c6issutkordeq"]
 
-[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/player.gd" id="1_5w5vk"]
-[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/3d_godot_robot.gd" id="3_3wkc1"]
-[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/own_invisible.gd" id="3_cpyjp"]
-[ext_resource type="Script" uid="uid://db0f6joldlpdj" path="res://scripts/mesh_frames.gd" id="3_j5sw6"]
-[ext_resource type="Script" uid="uid://yc8itc3jyphg" path="res://scripts/animation_handler.gd" id="4_ixf42"]
+[ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/multiplayer/player.gd" id="1_5w5vk"]
+[ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/multiplayer/3d_godot_robot.gd" id="3_3wkc1"]
+[ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/multiplayer/own_invisible.gd" id="3_cpyjp"]
+[ext_resource type="Script" uid="uid://cs3oa6r5jdtw6" path="res://scripts/anomaly/interaction_handler.gd" id="3_ef487"]
+[ext_resource type="Script" uid="uid://db0f6joldlpdj" path="res://scripts/multiplayer/mesh_frames.gd" id="3_j5sw6"]
+[ext_resource type="Script" uid="uid://yc8itc3jyphg" path="res://scripts/multiplayer/animation_handler.gd" id="4_ixf42"]
 [ext_resource type="PackedScene" uid="uid://klb3aq6ioiuu" path="res://assets/meshes/umi/idle/umi_idle_0.glb" id="4_rkxmf"]
-[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/camera.gd" id="4_vhcd7"]
+[ext_resource type="Script" uid="uid://cepqr0tu6rmxb" path="res://scripts/multiplayer/camera.gd" id="4_vhcd7"]
 [ext_resource type="PackedScene" uid="uid://cnwehnsuxt66d" path="res://assets/meshes/umi/idle/umi_idle_1.glb" id="5_rn12b"]
 [ext_resource type="PackedScene" uid="uid://c4w8x25t4ef8l" path="res://assets/meshes/umi/idle/umi_idle_2.glb" id="6_rkxmf"]
 [ext_resource type="PackedScene" uid="uid://qvohnrpxxaf6" path="res://assets/meshes/umi/walk/umi_walk_0.glb" id="7_j5sw6"]
@@ -17,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cynbl5oaebs4x" path="res://assets/meshes/umi/run/umi_run_1.glb" id="12_3wkc1"]
 [ext_resource type="PackedScene" uid="uid://bb3h7m884rv75" path="res://assets/meshes/umi/run/umi_run_2.glb" id="13_ixf42"]
 [ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
-[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/Anomaly/player_inputs.gd" id="18_tee1q"]
+[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/anomaly/player_inputs.gd" id="18_tee1q"]
 [ext_resource type="PackedScene" uid="uid://qw7xeotl0k2a" path="res://assets/prefabs/mark.tscn" id="19_ef487"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
@@ -175,12 +176,24 @@ replication_config = SubResource("SceneReplicationConfig_8t6fy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.843272, -0.33863163)
 script = ExtResource("4_vhcd7")
 
-[node name="raycast" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1687371099]
+[node name="interaction_handler" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1178974241]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 target_position = Vector3(0, -50, 0)
+collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
+script = ExtResource("3_ef487")
+
+[node name="mark_ray" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1687371099]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -50, 0)
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+script = ExtResource("3_ef487")
 
 [node name="facing" type="Node3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=204086816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0969281)
@@ -262,7 +275,7 @@ visible = false
 script = ExtResource("18_tee1q")
 mark = NodePath("mark_pivot")
 light = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/light")
-ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/raycast")
+ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/mark_ray")
 
 [node name="mark_pivot" type="Node3D" parent="player_inputs" unique_id=1130084135]
 

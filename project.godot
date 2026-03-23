@@ -23,8 +23,8 @@ config/icon="uid://cw430x1rim3dk"
 
 [autoload]
 
-Network="*res://scripts/network.gd"
-ItemDatabase="*res://scripts/item_database.gd"
+Network="*res://scripts/multiplayer/network.gd"
+ItemDatabase="*res://scripts/multiplayer/item_database.gd"
 
 [display]
 
@@ -37,8 +37,13 @@ folder_colors={
 "res://assets/meshes/": "gray",
 "res://assets/prefabs/": "teal",
 "res://materials/": "yellow",
+"res://scripts/": "red",
 "res://shaders/": "pink"
 }
+
+[global_group]
+
+PLAYERS_CONTAINER=""
 
 [input]
 
@@ -112,3 +117,4 @@ interact={
 
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
+3d_physics/layer_3="interactable"

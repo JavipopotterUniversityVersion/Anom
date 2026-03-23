@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b85561kxjkkcp"]
+[gd_scene format=3 uid="uid://b85561kxjkkcp"]
 
-[ext_resource type="Script" uid="uid://bj7yrijm7bppq" path="res://scripts/spring_arm_offset.gd" id="1_udvtc"]
+[ext_resource type="Script" uid="uid://bj7yrijm7bppq" path="res://scripts/multiplayer/spring_arm_offset.gd" id="1_udvtc"]
 
 [node name="SpringArmOffset" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
