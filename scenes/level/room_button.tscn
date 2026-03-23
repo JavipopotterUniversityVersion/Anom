@@ -1,0 +1,22 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://scripts/room_button.gd" id="1_room_button"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_icon"]
+font_size = 48
+font_color = Color(1, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RoomButton" type="Node3D"]
+script = ExtResource("1_room_button")
+
+[node name="InteractIcon" type="Label3D" parent="."]
+position = Vector3(0, 1.5, 0)
+text = "[E]"
+font_size = 48
+outline_size = 4
+outline_modulate = Color(0, 0, 0, 1)
+billboard = 1
+visible = false
+label_settings = SubResource("LabelSettings_icon")
