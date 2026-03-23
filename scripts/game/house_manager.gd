@@ -2,14 +2,16 @@ extends Node3D
 class_name HouseManager
 
 @export var anomalies:Array[Script]
-
-@export var doll:Node3D
-@export var main_door:Node3D
-@export var room_door:Node3D
-@export var drawer:Node3D
-@export var table_night:Node3D
+@export var furniture:Array[Node3D]
 
 var current_anomaly
+
+func _ready() -> void:
+	anomalize()
+
+func check_anomaly(mark:Decal) -> bool:
+	var is_correct:bool = current_anomaly.check_mark(mark)
+	return is_correct
 
 func anomalize():
 	if current_anomaly: current_anomaly.exit_anomaly(self)

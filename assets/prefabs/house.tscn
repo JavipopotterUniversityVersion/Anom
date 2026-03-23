@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://bb2wkn6uumq3g"]
 
 [ext_resource type="PackedScene" uid="uid://bgrcvbk3brr8j" path="res://assets/prefabs/doll.tscn" id="1_dvltn"]
-[ext_resource type="Script" uid="uid://cux6uhcaj0moo" path="res://scripts/anomaly/house_manager.gd" id="1_xls7h"]
+[ext_resource type="Script" uid="uid://cux6uhcaj0moo" path="res://scripts/game/house_manager.gd" id="1_xls7h"]
+[ext_resource type="Script" uid="uid://dfmuqc13ou1o0" path="res://scripts/game/anomalies/dissapeared_furniture.gd" id="2_r78la"]
 [ext_resource type="PackedScene" uid="uid://bktfqoq26o8xf" path="res://assets/prefabs/tv_stand.tscn" id="2_xls7h"]
 [ext_resource type="PackedScene" uid="uid://c6s0vp5sc3glc" path="res://assets/prefabs/tv.tscn" id="3_38hno"]
 [ext_resource type="PackedScene" uid="uid://dhyosl7b0ict7" path="res://assets/prefabs/short_table.tscn" id="4_rr7fe"]
@@ -98,10 +99,11 @@ albedo_texture = ExtResource("15_jpvw8")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 
-[node name="house" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("doll")]
+[node name="house" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("furniture")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
-doll = NodePath("doll")
+anomalies = Array[Script]([ExtResource("2_r78la")])
+furniture = [NodePath("table_night"), NodePath("bed"), NodePath("hall_door"), NodePath("entrance_table"), NodePath("bin"), NodePath("ambienter"), NodePath("tv")]
 
 [node name="doll" parent="." unique_id=91175468 instance=ExtResource("1_dvltn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.252232, 2.0174465, -46.935417)
@@ -232,9 +234,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.274435, 0, -70.58284)
 size = Vector3(49.930946, 1, 25.783516)
 material = SubResource("StandardMaterial3D_icp6u")
 
-[node name="Elevator" parent="." unique_id=1866584181 node_paths=PackedStringArray("door") instance=ExtResource("16_icp6u")]
+[node name="Elevator" parent="." unique_id=1866584181 node_paths=PackedStringArray("door", "doors", "house_manager") instance=ExtResource("16_icp6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.881442, -20.069698)
 door = NodePath("../main_door")
+doors = [NodePath("../hall_door"), NodePath("../room_door")]
+house_manager = NodePath("..")
 
 [node name="CollisionShape3D" parent="Elevator/room_area" parent_id_path=PackedInt32Array(1866584181, 1102215840) index="0" unique_id=1048140805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.784454, -0.85565186, -0.80963135)

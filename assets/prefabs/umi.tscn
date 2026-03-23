@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2si8gkbnde0c" path="res://scripts/multiplayer/player.gd" id="1_5w5vk"]
 [ext_resource type="Script" uid="uid://v8j54rbc0ik" path="res://scripts/multiplayer/3d_godot_robot.gd" id="3_3wkc1"]
 [ext_resource type="Script" uid="uid://dxttlelh1l803" path="res://scripts/multiplayer/own_invisible.gd" id="3_cpyjp"]
-[ext_resource type="Script" uid="uid://cs3oa6r5jdtw6" path="res://scripts/anomaly/interaction_handler.gd" id="3_ef487"]
+[ext_resource type="Script" uid="uid://cs3oa6r5jdtw6" path="res://scripts/game/interaction_handler.gd" id="3_ef487"]
 [ext_resource type="Script" uid="uid://db0f6joldlpdj" path="res://scripts/multiplayer/mesh_frames.gd" id="3_j5sw6"]
 [ext_resource type="Script" uid="uid://yc8itc3jyphg" path="res://scripts/multiplayer/animation_handler.gd" id="4_ixf42"]
 [ext_resource type="PackedScene" uid="uid://klb3aq6ioiuu" path="res://assets/meshes/umi/idle/umi_idle_0.glb" id="4_rkxmf"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cynbl5oaebs4x" path="res://assets/meshes/umi/run/umi_run_1.glb" id="12_3wkc1"]
 [ext_resource type="PackedScene" uid="uid://bb3h7m884rv75" path="res://assets/meshes/umi/run/umi_run_2.glb" id="13_ixf42"]
 [ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
-[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/anomaly/player_inputs.gd" id="18_tee1q"]
+[ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/game/player_inputs.gd" id="18_tee1q"]
 [ext_resource type="PackedScene" uid="uid://qw7xeotl0k2a" path="res://assets/prefabs/mark.tscn" id="19_ef487"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
@@ -148,13 +148,14 @@ properties/4/path = NodePath("UMI:rotation")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir")]
+[node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir", "mark")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_5w5vk")
 _body = NodePath("UMI")
 _spring_arm_offset = NodePath("SpringArmOffset/SpringArm3D")
 _facing_dir = NodePath("SpringArmOffset/SpringArm3D/Camera3D/facing")
+mark = NodePath("player_inputs/mark_pivot/mark")
 metadata/_custom_type_script = "uid://c2si8gkbnde0c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=837938989]
@@ -176,15 +177,16 @@ replication_config = SubResource("SceneReplicationConfig_8t6fy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.843272, -0.33863163)
 script = ExtResource("4_vhcd7")
 
-[node name="interaction_handler" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1178974241]
+[node name="interaction_handler" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1178974241 node_paths=PackedStringArray("character")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-target_position = Vector3(0, -50, 0)
+target_position = Vector3(0, -3, 0)
 collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
-debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_custom_color = Color(0.38724655, 0.47117412, 1, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_ef487")
+character = NodePath("../../../..")
 
 [node name="mark_ray" type="RayCast3D" parent="SpringArmOffset/SpringArm3D/Camera3D" unique_id=1687371099]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

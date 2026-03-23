@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_7io3u"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_vy2yy"]
-[ext_resource type="Script" uid="uid://2ca80odb6ma2" path="res://scripts/anomaly/trigger_area.gd" id="3_1j1lv"]
+[ext_resource type="Script" uid="uid://2ca80odb6ma2" path="res://scripts/game/trigger_area.gd" id="3_1j1lv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prn0d"]
 albedo_color = Color(0.52538514, 0.32271776, 0.1699095, 1)

@@ -13,6 +13,7 @@ var player_inventory: PlayerInventory
 @export var _body: Node3D = null
 @export var _spring_arm_offset: Node3D = null
 @export var _facing_dir:Node3D = null
+@export var mark:Decal
 
 var _current_speed: float
 var _respawn_point = Vector3(0, 5, 0)
