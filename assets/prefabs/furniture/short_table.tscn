@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dhyosl7b0ict7"]
 
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_2erb3"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_4tuat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yaxs"]
@@ -41,12 +42,16 @@ shadow_mesh = SubResource("ArrayMesh_ty0my")
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tuat"]
 size = Vector3(3.1589203, 4.210784, 3.156681)
 
-[node name="short_table" type="MeshInstance3D" unique_id=1583540651]
+[node name="short_table" type="Node3D" unique_id=158576897]
+script = ExtResource("1_2erb3")
+
+[node name="short_table" type="MeshInstance3D" parent="." unique_id=1583540651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.642746, 0, 10.482207)
 mesh = SubResource("ArrayMesh_um3ps")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1066909496]
+[node name="StaticBody3D" type="StaticBody3D" parent="short_table" unique_id=1066909496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.28482, 2.3280787, -9.538707)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=788260735]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="short_table/StaticBody3D" unique_id=788260735]
 shape = SubResource("BoxShape3D_4tuat")

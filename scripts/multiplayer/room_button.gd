@@ -4,7 +4,7 @@ extends Interactable
 @export var doors:Array[Node3D]
 @export var close_animation: StringName = "close"
 @export var open_animation: StringName = "open"
-@export var reopen_delay: float = 5.0
+@export var reopen_delay: float = 1.0
 @onready var _interact_icon: Label3D = $InteractIcon
 @onready var players_container: Node3D = get_tree().get_first_node_in_group(&"PLAYERS_CONTAINER")
 @export var house_manager:HouseManager
@@ -83,6 +83,7 @@ func _activate_door() -> void:
 	for o_door in doors:
 		animation_player = o_door.get_node("AnimationPlayer")
 		animation_player.play(close_animation)
+		o_door.get_node("trigger_area").reset()
 		
 	animation_player = door.get_node("AnimationPlayer")
 	animation_player.play(close_animation)

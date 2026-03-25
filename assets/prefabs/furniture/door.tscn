@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://7bftqxnsi5w0"]
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_7io3u"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_vnk0l"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_vy2yy"]
 [ext_resource type="Script" uid="uid://2ca80odb6ma2" path="res://scripts/game/trigger_area.gd" id="3_1j1lv"]
 
@@ -257,10 +258,11 @@ properties/3/path = NodePath("collider/CollisionShape3D:disabled")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Door" type="Node3D" unique_id=924969253]
+[node name="Door" type="Node3D" unique_id=924969253 node_paths=PackedStringArray("colliders")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
+script = ExtResource("1_vnk0l")
+colliders = [NodePath("collider/CollisionShape3D"), NodePath("trigger_area/collision")]
 metadata/BLOCKED = false
-metadata/COLLIDERS = [NodePath("collider/CollisionShape3D"), NodePath("trigger_area/collision")]
 
 [node name="door_frame" type="MeshInstance3D" parent="." unique_id=418694822]
 transform = Transform3D(0, 0, 3.203221, 0, 6.561132, 0, -0.43727052, 0, 0, 0, 0, 0)

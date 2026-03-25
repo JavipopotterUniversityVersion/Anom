@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://m2crbftc5ake"]
 
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_dcv0m"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_q3oct"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wv3i"]
 albedo_color = Color(0.3515629, 0.35156292, 0.35156274, 1)
@@ -39,14 +40,18 @@ shadow_mesh = SubResource("ArrayMesh_xommm")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dcv0m"]
 size = Vector3(2, 2, 2.1592155)
 
-[node name="table_night" type="MeshInstance3D" unique_id=1308366400]
+[node name="table_night" type="Node3D" unique_id=210624403 node_paths=PackedStringArray("colliders")]
+script = ExtResource("1_q3oct")
+colliders = [NodePath("table_night/StaticBody3D/CollisionShape3D")]
+
+[node name="table_night" type="MeshInstance3D" parent="." unique_id=1308366400]
 transform = Transform3D(0, 0, 1.71009, 0, 3.4201794, 0, -3.42018, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_spsnr")
 skeleton = NodePath("")
 metadata/COLLIDERS = [NodePath("StaticBody3D/CollisionShape3D")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=982927941]
+[node name="StaticBody3D" type="StaticBody3D" parent="table_night" unique_id=982927941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.079607606)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1106514075]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_night/StaticBody3D" unique_id=1106514075]
 shape = SubResource("BoxShape3D_dcv0m")

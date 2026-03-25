@@ -2,6 +2,10 @@ extends Anomaly
 
 static func enter_anomaly(house:HouseManager):
 	anomaly = house.furniture.pick_random()
+	
+	print("\n" + anomaly.name)
+	print(str(anomaly.aabbs) + "\n")
+	
 	anomaly.disable_colliders()
 	anomaly.hide()
 

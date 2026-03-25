@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://f7b770a5bia6"]
 
 [ext_resource type="Texture2D" uid="uid://cjxsw2t3q5yn4" path="res://assets/meshes/house/door/bin_texture.jpg" id="1_myg88"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_tbgo2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0sso"]
 albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
@@ -40,6 +41,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hf2ts")
 
-[node name="bin" type="MeshInstance3D" unique_id=609334439]
+[node name="bin" type="Node3D" unique_id=1918151792]
+script = ExtResource("1_tbgo2")
+
+[node name="bin" type="MeshInstance3D" parent="." unique_id=609334439]
 mesh = SubResource("ArrayMesh_jb1me")
 skeleton = NodePath("")

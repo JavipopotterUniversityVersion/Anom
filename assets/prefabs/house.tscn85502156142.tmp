@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgrcvbk3brr8j" path="res://assets/prefabs/doll.tscn" id="1_dvltn"]
 [ext_resource type="Script" uid="uid://cux6uhcaj0moo" path="res://scripts/game/house_manager.gd" id="1_xls7h"]
-[ext_resource type="Script" uid="uid://dup1qjd8selmc" path="res://scripts/game/anomalies/smaller_floor.gd" id="3_wmhwa"]
+[ext_resource type="Script" uid="uid://dfmuqc13ou1o0" path="res://scripts/game/anomalies/dissapeared_furniture.gd" id="2_r78la"]
 [ext_resource type="PackedScene" uid="uid://bktfqoq26o8xf" path="res://assets/prefabs/furniture/tv_stand.tscn" id="5_wmhwa"]
 [ext_resource type="PackedScene" uid="uid://c6s0vp5sc3glc" path="res://assets/prefabs/furniture/tv.tscn" id="6_00bt7"]
 [ext_resource type="PackedScene" uid="uid://dhyosl7b0ict7" path="res://assets/prefabs/furniture/short_table.tscn" id="7_2cyr1"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://gpcpyimu1rp0" path="res://assets/meshes/house/floor/floor_texture.jpg" id="14_rr7fe"]
 [ext_resource type="Texture2D" uid="uid://bpur6iglbotfe" path="res://assets/meshes/house/floor/floor_texture_wooden.jpg" id="15_jpvw8"]
 [ext_resource type="PackedScene" uid="uid://chgjcckdgqik7" path="res://scenes/level/room_button.tscn" id="16_icp6u"]
-[ext_resource type="Script" uid="uid://dnrxp6kbw4akp" path="res://scripts/game/floor_anomaly_object.gd" id="18_00bt7"]
+[ext_resource type="Script" uid="uid://bhmunkjvnio1n" path="res://scripts/game/anomaly_object.gd" id="17_00bt7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8pwa"]
 
@@ -67,7 +67,7 @@ uv1_triplanar = true
 [node name="house" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("furniture", "wooden_floor")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
-anomalies = Array[Script]([ExtResource("3_wmhwa")])
+anomalies = Array[Script]([ExtResource("2_r78la")])
 furniture = [NodePath("tv_stand"), NodePath("tv"), NodePath("short_table"), NodePath("bin"), NodePath("table_night"), NodePath("drawer"), NodePath("entrance_table"), NodePath("table"), NodePath("bed"), NodePath("hall_door"), NodePath("room_door")]
 wooden_floor = NodePath("house_combiner/floor")
 
@@ -122,7 +122,6 @@ use_collision = true
 
 [node name="house_base" type="CSGBox3D" parent="house_combiner" unique_id=1095501976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.08242, 12.533266, -41.164013)
-visible = false
 size = Vector3(69.83119, 25.41565, 86.78528)
 material = ExtResource("13_38hno")
 
@@ -184,19 +183,19 @@ material = ExtResource("13_38hno")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.998413, 0, -45.920002)
 size = Vector3(39.232742, 1, 23.752209)
 material = SubResource("StandardMaterial3D_jpvw8")
-script = ExtResource("18_00bt7")
+script = ExtResource("17_00bt7")
 
 [node name="floor" type="CSGBox3D" parent="house_combiner" unique_id=302317968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.471844, 0, -40.662548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.471844, 0, -40.662544)
 size = Vector3(30.325764, 1, 85.62409)
 material = SubResource("StandardMaterial3D_icp6u")
-script = ExtResource("18_00bt7")
+script = ExtResource("17_00bt7")
 
 [node name="floor2" type="CSGBox3D" parent="house_combiner" unique_id=1032810326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.274435, 0, -70.58284)
 size = Vector3(49.930946, 1, 25.783516)
 material = SubResource("StandardMaterial3D_icp6u")
-script = ExtResource("18_00bt7")
+script = ExtResource("17_00bt7")
 
 [node name="Elevator" parent="." unique_id=1866584181 node_paths=PackedStringArray("door", "doors", "house_manager") instance=ExtResource("16_icp6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.881442, -20.069698)

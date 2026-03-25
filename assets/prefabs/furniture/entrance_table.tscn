@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://baai6xeahp3sc"]
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_6u327"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_h67er"]
 [ext_resource type="Texture2D" uid="uid://gpcpyimu1rp0" path="res://assets/meshes/house/floor/floor_texture.jpg" id="1_ux5y7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lltyi"]
@@ -74,8 +75,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kto7b")
 
-[node name="entrance_table" type="Node3D" unique_id=196812606]
+[node name="entrance_table" type="Node3D" unique_id=196812606 node_paths=PackedStringArray("colliders")]
 transform = Transform3D(1.3124979, 0, 0, 0, 2.6943889, 0, 0, 0, 2.3317661, 0, 0, 0)
+script = ExtResource("1_h67er")
+colliders = [NodePath("StaticBody3D/CollisionShape3D")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1138698998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2133938, 1.0397784, 0)

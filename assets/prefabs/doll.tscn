@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://bgrcvbk3brr8j"]
 
+[ext_resource type="Script" uid="uid://bhmunkjvnio1n" path="res://scripts/game/anomaly_object.gd" id="1_r4d4l"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyb4"]
 resource_name = "Material.008"
 cull_mode = 2
@@ -120,6 +122,7 @@ bind/1/bone = -1
 bind/1/pose = Transform3D(1, 0.00040608898, -1.40000775e-05, -0.00040629553, 0.9996788, -0.025340045, 3.7113268e-06, 0.025340075, 0.9996789, -22.26787, -2.598842, 16.534399)
 
 [node name="doll" type="Node3D" unique_id=91175468]
+script = ExtResource("1_r4d4l")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=2016505778]
 bones/0/name = "Bone"

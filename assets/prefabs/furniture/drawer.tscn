@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dda3yrk4013md"]
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_0bsug"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_upe8r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d38wx"]
 albedo_color = Color(0.56270415, 0.6495817, 0.6978048, 1)
@@ -39,13 +40,17 @@ shadow_mesh = SubResource("ArrayMesh_ib6ac")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bsug"]
 size = Vector3(2.146665, 2.0015454, 2.0903704)
 
-[node name="drawer" type="MeshInstance3D" unique_id=1896688596]
+[node name="drawer" type="Node3D" unique_id=133749772 node_paths=PackedStringArray("colliders")]
+script = ExtResource("1_upe8r")
+colliders = [NodePath("drawer/StaticBody3D/CollisionShape3D")]
+
+[node name="drawer" type="MeshInstance3D" parent="." unique_id=1896688596]
 transform = Transform3D(1.949434, 0, 0, 0, 5.7850504, 0, 0, 0, 5.3222694, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xsy2p")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=5532810]
+[node name="StaticBody3D" type="StaticBody3D" parent="drawer" unique_id=5532810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02814734, 0.0007727146, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1492709683]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="drawer/StaticBody3D" unique_id=1492709683]
 shape = SubResource("BoxShape3D_0bsug")

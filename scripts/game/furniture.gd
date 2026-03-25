@@ -1,4 +1,4 @@
-extends Node3D
+extends AnomalyObject
 class_name Furniture
 
 @export var colliders:Array[CollisionShape3D]

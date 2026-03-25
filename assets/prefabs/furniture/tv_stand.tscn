@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bktfqoq26o8xf"]
 
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_5erbo"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_rq7ai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih4pe"]
 resource_name = "Material.006"
@@ -46,13 +47,17 @@ shadow_mesh = SubResource("ArrayMesh_pxnb4")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5erbo"]
 size = Vector3(7.5169973, 1.7998325, 2.132658)
 
-[node name="tv_stand" type="MeshInstance3D" unique_id=1227149468]
+[node name="tv_stand" type="Node3D" unique_id=1298075017 node_paths=PackedStringArray("colliders")]
+script = ExtResource("1_rq7ai")
+colliders = [NodePath("tv_stand/StaticBody3D/CollisionShape3D")]
+
+[node name="tv_stand" type="MeshInstance3D" parent="." unique_id=1227149468]
 transform = Transform3D(3.1506804e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.1506804e-07, 0, 0, 0)
 mesh = SubResource("ArrayMesh_v8jx7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=657259085]
+[node name="StaticBody3D" type="StaticBody3D" parent="tv_stand" unique_id=657259085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041766167, -1.0605586, -0.0014972687)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=723444375]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tv_stand/StaticBody3D" unique_id=723444375]
 shape = SubResource("BoxShape3D_5erbo")
