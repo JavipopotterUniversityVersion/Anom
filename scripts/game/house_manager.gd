@@ -8,6 +8,9 @@ class_name HouseManager
 @export var doll:DollAnomalyObject
 @export var wooden_floor:AnomalyObject
 
+@export var house:Node3D
+@export var final:PackedScene
+
 var current_anomaly
 
 func _ready() -> void:
@@ -41,4 +44,16 @@ func execute_anomaly(anomaly_name:StringName):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("anomalize"):
 		anomalize()
-		print("debug anomaly")
+	elif event.is_action_pressed("end_game"):
+		end()
+
+func end():
+	house.queue_free()
+	var final_obj = final.instantiate()
+	
+	elevator.door = final_obj.get_node("props/main_door")
+	elevator.blocked = true 
+	elevator.open_door()
+	
+	final_obj.position = Vector3.ZERO
+	add_child(final_obj)
