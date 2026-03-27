@@ -6,6 +6,7 @@ extends Node
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mark"):
 		if ray.is_colliding():
+			mark.get_node("mark").show()
 			mark.global_position = ray.get_collision_point()
 			mark.look_at(ray.get_collision_point() - ray.get_collision_normal())
 	elif event.is_action_pressed("toggle_light"):

@@ -1,4 +1,6 @@
 extends Interactable
+class_name RoomButton
+
 @export var room: Area3D
 @export var door: Node3D
 @export var doors:Array[Node3D]
@@ -78,20 +80,25 @@ func _request_activate() -> void:
 
 @rpc("call_local", "reliable")
 func _activate_door() -> void:
-	var animation_player:AnimationPlayer
-	
 	for o_door in doors:
-		animation_player = o_door.get_node("AnimationPlayer")
+		var animation_player = o_door.get_node("AnimationPlayer")
 		animation_player.play(close_animation)
 		o_door.get_node("trigger_area").reset()
-		
-	animation_player = door.get_node("AnimationPlayer")
-	animation_player.play(close_animation)
+	
+	close_door()
 	
 	await get_tree().create_timer(reopen_delay).timeout
 	house_manager.anomalize()
-	if not is_inside_tree():
-		return
-	animation_player.play(open_animation)
+	
+	open_door()
+	
 	if multiplayer.is_server():
 		_door_busy = false
+
+func open_door():
+	var animation_player:AnimationPlayer = door.get_node("AnimationPlayer")
+	animation_player.play(open_animation)
+
+func close_door():
+	var animation_player:AnimationPlayer = door.get_node("AnimationPlayer")
+	animation_player.play(close_animation)

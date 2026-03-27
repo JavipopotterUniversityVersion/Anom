@@ -25,6 +25,11 @@ config/icon="uid://cw430x1rim3dk"
 
 Network="*res://scripts/multiplayer/network.gd"
 ItemDatabase="*res://scripts/multiplayer/item_database.gd"
+GuideUI="*uid://b3wi0gwlnex0t"
+
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [display]
 
@@ -44,6 +49,7 @@ folder_colors={
 [global_group]
 
 PLAYERS_CONTAINER=""
+PLAYER=""
 
 [input]
 

@@ -5,7 +5,7 @@ static func enter_anomaly(house:HouseManager):
 	anomaly = house.wooden_floor
 	
 	print("\n" + anomaly.name)
-	print(str(anomaly.aabbs) + "\n")
+	print(str(anomaly.get_aabb()) + "\n")
 	
 	(house.wooden_floor.material as StandardMaterial3D).uv1_scale = Vector3.ONE * 0.2
 

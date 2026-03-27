@@ -158,11 +158,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1fw4h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5f0b"]
-size = Vector3(12.121704, 2.2807617, 6.060852)
+size = Vector3(12.663879, 4.9382324, 6.060852)
 
-[node name="bed" type="Node3D" unique_id=1987173430 node_paths=PackedStringArray("colliders")]
+[node name="bed" type="Node3D" unique_id=1987173430 node_paths=PackedStringArray("colliders", "shapes")]
 script = ExtResource("1_hahah")
 colliders = [NodePath("base/pillow/StaticBody3D/CollisionShape3D"), NodePath("base/StaticBody3D/CollisionShape3D")]
+shapes = [NodePath("base/pillow/StaticBody3D/CollisionShape3D"), NodePath("base/StaticBody3D/CollisionShape3D")]
 
 [node name="base" type="MeshInstance3D" parent="." unique_id=573192549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.040565, 0, 20.227892)
@@ -191,5 +192,5 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5154, 3.7091188, -19.542809)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="base/StaticBody3D" unique_id=696357007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14038086, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27108765, -1.1883545, 0)
 shape = SubResource("BoxShape3D_o5f0b")

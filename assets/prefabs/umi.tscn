@@ -148,7 +148,7 @@ properties/4/path = NodePath("UMI:rotation")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir", "mark")]
+[node name="Umi" type="CharacterBody3D" unique_id=190074909 node_paths=PackedStringArray("_body", "_spring_arm_offset", "_facing_dir", "mark") groups=["PLAYER"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_5w5vk")

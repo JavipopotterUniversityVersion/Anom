@@ -47,9 +47,10 @@ shadow_mesh = SubResource("ArrayMesh_pxnb4")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5erbo"]
 size = Vector3(7.5169973, 1.7998325, 2.132658)
 
-[node name="tv_stand" type="Node3D" unique_id=1298075017 node_paths=PackedStringArray("colliders")]
+[node name="tv_stand" type="Node3D" unique_id=1298075017 node_paths=PackedStringArray("colliders", "shapes")]
 script = ExtResource("1_rq7ai")
 colliders = [NodePath("tv_stand/StaticBody3D/CollisionShape3D")]
+shapes = [NodePath("tv_stand/StaticBody3D/CollisionShape3D")]
 
 [node name="tv_stand" type="MeshInstance3D" parent="." unique_id=1227149468]
 transform = Transform3D(3.1506804e-07, 0, 1.761988, 0, 1.761988, 0, -1.761988, 0, 3.1506804e-07, 0, 0, 0)

@@ -258,10 +258,11 @@ properties/3/path = NodePath("collider/CollisionShape3D:disabled")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Door" type="Node3D" unique_id=924969253 node_paths=PackedStringArray("colliders")]
+[node name="Door" type="Node3D" unique_id=924969253 node_paths=PackedStringArray("colliders", "shapes")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 script = ExtResource("1_vnk0l")
 colliders = [NodePath("collider/CollisionShape3D"), NodePath("trigger_area/collision")]
+shapes = [NodePath("collider/CollisionShape3D"), NodePath("trigger_area/collision")]
 metadata/BLOCKED = false
 
 [node name="door_frame" type="MeshInstance3D" parent="." unique_id=418694822]

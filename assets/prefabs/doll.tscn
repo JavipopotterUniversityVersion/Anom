@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bgrcvbk3brr8j"]
 
-[ext_resource type="Script" uid="uid://bhmunkjvnio1n" path="res://scripts/game/anomaly_object.gd" id="1_r4d4l"]
+[ext_resource type="Script" uid="uid://c82an0j6ndcu2" path="res://scripts/game/anomalies/anomaly_objects/doll.gd" id="1_r4d4l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyb4"]
 resource_name = "Material.008"
@@ -121,8 +121,15 @@ bind/1/name = &"Bone.001"
 bind/1/bone = -1
 bind/1/pose = Transform3D(1, 0.00040608898, -1.40000775e-05, -0.00040629553, 0.9996788, -0.025340045, 3.7113268e-06, 0.025340075, 0.9996789, -22.26787, -2.598842, 16.534399)
 
-[node name="doll" type="Node3D" unique_id=91175468]
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4d4l"]
+size = Vector3(1.5852051, 3.3483887, 1.3256836)
+
+[node name="doll" type="Node3D" unique_id=91175468 node_paths=PackedStringArray("skeleton", "shapes")]
 script = ExtResource("1_r4d4l")
+skeleton = NodePath("Skeleton3D")
+bone_idx = 1
+shapes = [NodePath("CollisionShape3D")]
+debug = false
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=2016505778]
 bones/0/name = "Bone"
@@ -137,9 +144,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0.993344, -0.11493446, -0.0075829923, 0.11493446, 0.9847048, 0.13094412, -0.007582984, -0.13094413, 0.9913606, 2.4065375e-06, 0.15018773, 1.6391277e-06)
 bones/1/enabled = true
 bones/1/position = Vector3(2.4065375e-06, 0.15018773, 1.6391277e-06)
-bones/1/rotation = Quaternion(-0.065723866, -2.2203976e-09, 0.057688244, 0.9961689)
-bones/1/scale = Vector3(0.9999999, 0.9999999, 0.9999998)
+bones/1/rotation = Quaternion(-0.065723866, -2.9215759e-09, 0.057688244, 0.9961689)
+bones/1/scale = Vector3(0.99999917, 0.9999997, 0.9999995)
 
 [node name="doll" type="MeshInstance3D" parent="Skeleton3D" unique_id=1564167276]
 mesh = SubResource("ArrayMesh_y3af1")
 skin = SubResource("Skin_svbbu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=297591334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008911133, -0.10168457, 0.1628418)
+shape = SubResource("BoxShape3D_r4d4l")
+debug_color = Color(0, 0.6, 0.69803923, 0)

@@ -42,8 +42,9 @@ shadow_mesh = SubResource("ArrayMesh_ty0my")
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tuat"]
 size = Vector3(3.1589203, 4.210784, 3.156681)
 
-[node name="short_table" type="Node3D" unique_id=158576897]
+[node name="short_table" type="Node3D" unique_id=158576897 node_paths=PackedStringArray("shapes")]
 script = ExtResource("1_2erb3")
+shapes = [NodePath("short_table/StaticBody3D/CollisionShape3D")]
 
 [node name="short_table" type="MeshInstance3D" parent="." unique_id=1583540651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.642746, 0, 10.482207)
