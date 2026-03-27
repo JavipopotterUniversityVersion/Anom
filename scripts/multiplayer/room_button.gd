@@ -97,9 +97,12 @@ func _activate_door() -> void:
 	close_door()
 	
 	await get_tree().create_timer(reopen_delay).timeout
-	house_manager.anomalize()
 	
-	open_door()
+	if floor_counter >= 2:
+		house_manager.end()
+	else: 
+		house_manager.anomalize()
+		open_door()
 	
 	if multiplayer.is_server():
 		_door_busy = false
