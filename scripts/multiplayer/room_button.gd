@@ -11,6 +11,9 @@ class_name RoomButton
 @onready var players_container: Node3D = get_tree().get_first_node_in_group(&"PLAYERS_CONTAINER")
 @export var house_manager:HouseManager
 
+@export var floor_counter:int = 0
+@export var floor_counter_display:Label3D
+
 var _players_in_room: Dictionary = {}
 var _door_busy: bool = false
 var _local_player_cache: Character = null
@@ -53,12 +56,22 @@ func _get_local_player() -> Character:
 
 func interact(character:Character):
 	if blocked: return
+	super(character)
+	
 	var is_correct:bool = house_manager.check_anomaly(character.mark)
 	
-	if is_correct: print("NEXT FLOOR!")
-	else:  print("WRONG ONE")
+	if is_correct: 
+		print("NEXT FLOOR!")
+		floor_counter += 1
+	else:  
+		floor_counter = 0
+		print("WRONG ONE")
 	
+	_update_floor_display()
 	_request_activate()
+
+func _update_floor_display():
+	floor_counter_display.text = "FLOOR " + str(floor_counter)
 
 func on_cant_interact():
 	_interact_icon.hide()
@@ -80,11 +93,7 @@ func _request_activate() -> void:
 
 @rpc("call_local", "reliable")
 func _activate_door() -> void:
-	for o_door in doors:
-		var animation_player = o_door.get_node("AnimationPlayer")
-		animation_player.play(close_animation)
-		o_door.get_node("trigger_area").reset()
-	
+	reset_doors()
 	close_door()
 	
 	await get_tree().create_timer(reopen_delay).timeout
@@ -94,6 +103,12 @@ func _activate_door() -> void:
 	
 	if multiplayer.is_server():
 		_door_busy = false
+
+func reset_doors():
+	for o_door in doors:
+		var animation_player = o_door.get_node("AnimationPlayer")
+		animation_player.play(close_animation)
+		o_door.get_node("trigger_area").reset()
 
 func open_door():
 	var animation_player:AnimationPlayer = door.get_node("AnimationPlayer")

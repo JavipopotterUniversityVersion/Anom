@@ -60,9 +60,10 @@ func _add_player(id: int, player_info : Dictionary):
 	if players_container.has_node(str(id)):
 		return
 
-	var player = player_scene.instantiate()
+	var player = GlobalData.CHARACTERS[player_info["character"]].instantiate()
 	player.name = str(id)
 	player.position = Vector3.ZERO
+	
 	players_container.add_child(player, true)
 
 	var nick = Network.players[id]["nick"]

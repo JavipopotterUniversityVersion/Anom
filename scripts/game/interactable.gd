@@ -1,6 +1,7 @@
 extends Area3D
 class_name Interactable
 var blocked:bool
+signal on_interact
 
 func on_can_interact():
 	if blocked: return
@@ -10,3 +11,4 @@ func on_cant_interact():
 
 func interact(_character:Character):
 	if blocked: return
+	on_interact.emit()
