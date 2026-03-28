@@ -279,7 +279,6 @@ light = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/light")
 ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/mark_ray")
 
 [node name="mark_pivot" type="Node3D" parent="player_inputs" unique_id=1130084135]
-visible = false
 
 [node name="mark" parent="player_inputs/mark_pivot" unique_id=600274410 instance=ExtResource("19_ef487")]
 transform = Transform3D(2.2222223, 0, 0, 0, -9.713642e-08, -2.2222223, 0, 2.2222223, -9.713642e-08, 0, 0, 0)

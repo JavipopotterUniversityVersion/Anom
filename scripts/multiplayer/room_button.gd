@@ -11,6 +11,8 @@ class_name RoomButton
 @onready var players_container: Node3D = get_tree().get_first_node_in_group(&"PLAYERS_CONTAINER")
 @export var house_manager:HouseManager
 
+const NUMBER_OF_FLOORS:int = 8
+
 @export var floor_counter:int = 0
 @export var floor_counter_display:Label3D
 
@@ -121,7 +123,7 @@ func _activate_door() -> void:
 	
 	await get_tree().create_timer(reopen_delay).timeout
 	
-	if floor_counter >= 2:
+	if floor_counter >= NUMBER_OF_FLOORS:
 		house_manager.end()
 	else: 
 		house_manager.anomalize()

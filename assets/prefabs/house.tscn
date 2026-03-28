@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dfmuqc13ou1o0" path="res://scripts/game/anomalies/dissapeared_furniture.gd" id="2_r78la"]
 [ext_resource type="Script" uid="uid://dup1qjd8selmc" path="res://scripts/game/anomalies/smaller_floor.gd" id="3_wmhwa"]
 [ext_resource type="Script" uid="uid://ci8l2hc4mglf5" path="res://scripts/game/anomalies/doll_anomaly.gd" id="4_2cyr1"]
+[ext_resource type="Script" uid="uid://j2rcmgri3dcn" path="res://scripts/game/anomalies/peripheral_material_anomaly.gd" id="4_wf61y"]
 [ext_resource type="PackedScene" uid="uid://bktfqoq26o8xf" path="res://assets/prefabs/furniture/tv_stand.tscn" id="5_wmhwa"]
 [ext_resource type="PackedScene" uid="uid://c6s0vp5sc3glc" path="res://assets/prefabs/furniture/tv.tscn" id="6_00bt7"]
 [ext_resource type="PackedScene" uid="uid://dhyosl7b0ict7" path="res://assets/prefabs/furniture/short_table.tscn" id="7_2cyr1"]
@@ -20,7 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://bpur6iglbotfe" path="res://assets/meshes/house/floor/floor_texture_wooden.jpg" id="15_jpvw8"]
 [ext_resource type="PackedScene" uid="uid://chgjcckdgqik7" path="res://scenes/level/room_button.tscn" id="16_icp6u"]
 [ext_resource type="Script" uid="uid://dnrxp6kbw4akp" path="res://scripts/game/anomalies/anomaly_objects/floor_anomaly_object.gd" id="18_00bt7"]
+[ext_resource type="Script" uid="uid://jjg3tbyugppw" path="res://scripts/game/anomalies/anomaly_objects/peripheral_material_anomaly_object.gd" id="19_pf7sx"]
 [ext_resource type="PackedScene" uid="uid://3iuhg347uc4w" path="res://assets/prefabs/final.tscn" id="20_17fyk"]
+[ext_resource type="Material" path="res://materials/anomaly_look_material.tres" id="21_rqj5k"]
+[ext_resource type="Material" path="res://materials/anomaly_peripheral_material.tres" id="22_2utg3"]
+[ext_resource type="PackedScene" uid="uid://d0c0fvme0feeg" path="res://assets/prefabs/furniture/frame.tscn" id="25_lv6ox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpvw8"]
 albedo_color = Color(0.646029, 0.646029, 0.646029, 1)
@@ -70,14 +75,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_17fyk")
 
-[node name="environments" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("elevator", "furniture", "doll", "wooden_floor", "house")]
+[node name="environments" type="Node3D" unique_id=1348941581 node_paths=PackedStringArray("elevator", "furniture", "doll", "wooden_floor", "peripheral_material_object", "house")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 script = ExtResource("1_xls7h")
 elevator = NodePath("Elevator")
-anomalies = Array[Script]([ExtResource("3_wmhwa"), ExtResource("2_r78la"), ExtResource("4_2cyr1")])
+anomalies = Dictionary[StringName, Script]({
+&"DISSAPEARED_FURNITURE": ExtResource("2_r78la"),
+&"DOLL": ExtResource("4_2cyr1"),
+&"PERIPHERIAL": ExtResource("4_wf61y"),
+&"SMALL_FLOOR": ExtResource("3_wmhwa")
+})
 furniture = [NodePath("house/props/tv_stand"), NodePath("house/props/tv"), NodePath("house/props/short_table"), NodePath("house/props/bin"), NodePath("house/props/table_night"), NodePath("house/props/drawer"), NodePath("house/props/entrance_table"), NodePath("house/props/table"), NodePath("house/props/bed"), NodePath("house/props/hall_door"), NodePath("house/props/room_door")]
 doll = NodePath("house/props/doll")
 wooden_floor = NodePath("house/floor")
+peripheral_material_object = NodePath("house/props/frame")
 house = NodePath("house")
 final = ExtResource("20_17fyk")
 
@@ -173,6 +184,12 @@ debug_color = Color(0.7137255, 0.40784314, 0.6901961, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3420067, 0, -31.716175)
 mesh = SubResource("ArrayMesh_0rk1n")
 skeleton = NodePath("")
+script = ExtResource("19_pf7sx")
+look_material = ExtResource("21_rqj5k")
+peripheral_material = ExtResource("22_2utg3")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="house/props/ambienter" unique_id=118261746]
+aabb = AABB(-0.36450768, -0.80698633, -0.36420345, 0.72901535, 1.6139727, 0.7284069)
 
 [node name="table_night" parent="house/props" unique_id=1308366400 instance=ExtResource("9_1v3ks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3011, 3.4508362, -47.10746)
@@ -213,6 +230,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.982265, 0, -42.032154)
 
 [node name="bin" parent="house/props" unique_id=609334439 instance=ExtResource("8_17fyk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.796165, 1.0729907, -40.486088)
+
+[node name="frame" parent="house/props" unique_id=595625361 instance=ExtResource("25_lv6ox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.719355, -36.62527)
 
 [node name="Elevator" parent="." unique_id=1866584181 node_paths=PackedStringArray("door", "doors", "house_manager") instance=ExtResource("16_icp6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.881442, -20.069698)

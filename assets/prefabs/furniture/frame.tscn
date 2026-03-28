@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d0c0fvme0feeg"]
+
+[ext_resource type="Script" uid="uid://jjg3tbyugppw" path="res://scripts/game/anomalies/anomaly_objects/peripheral_material_anomaly_object.gd" id="1_iegip"]
+[ext_resource type="Texture2D" uid="uid://cjhdmyn4s64mv" path="res://assets/images/javi.jpg" id="2_sfedc"]
+[ext_resource type="Texture2D" uid="uid://ceincxh02s5gf" path="res://assets/images/evil_javi.jpg" id="3_as6kx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avvku"]
+albedo_texture = ExtResource("2_sfedc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wb3m"]
+albedo_texture = ExtResource("3_as6kx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c2qmm"]
+
+[node name="frame" type="Node3D" unique_id=595625361 node_paths=PackedStringArray("target_mesh", "screen_notifier")]
+script = ExtResource("1_iegip")
+target_mesh = NodePath("mesh")
+screen_notifier = NodePath("VisibleOnScreenNotifier3D")
+look_material = SubResource("StandardMaterial3D_avvku")
+peripheral_material = SubResource("StandardMaterial3D_1wb3m")
+
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=672110904]
+transform = Transform3D(-2.18557e-07, 5, 0, 2.18557e-07, 9.553427e-15, -3, -5, -2.18557e-07, -1.3113416e-07, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_avvku")
+mesh = SubResource("PlaneMesh_c2qmm")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=553963447]
+aabb = AABB(-0.22432841, -0.29427516, -0.30304173, 0.44865683, 0.5885503, 0.60608345)

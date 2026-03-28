@@ -2,22 +2,23 @@ extends Node3D
 class_name HouseManager
 
 @export var elevator:RoomButton
-@export var anomalies:Array[Script]
-@export var available_anomalies:Array[Script]
+@export var anomalies:Dictionary[StringName, Script]
 @export var furniture:Array[Furniture]
 @export var doll:DollAnomalyObject
 @export var wooden_floor:AnomalyObject
+@export var peripheral_material_object:PeripheralMaterialAnomalyObject
 
 @export var house:Node3D
 @export var final:PackedScene
 
+var available_anomalies:Array[StringName]
 var current_anomaly
 
 func _ready() -> void:
 	reset()
 
 func reset():
-	available_anomalies = anomalies.duplicate()
+	available_anomalies = anomalies.keys()
 
 func check_anomaly(mark:Decal) -> bool:
 	if not current_anomaly: return false
@@ -32,15 +33,10 @@ func anomalize():
 		reset()
 
 	var anomaly_index:int = randi_range(0, available_anomalies.size() - 1)
-	var selected_anomaly:Script = available_anomalies.pop_at(anomaly_index)
-	if selected_anomaly == null:
-		return
-
+	var selected_anomaly:StringName = available_anomalies.pop_at(anomaly_index)
 	var payload := _build_anomaly_payload(selected_anomaly)
-	_apply_anomaly_sync.rpc(selected_anomaly.resource_name, payload)
-
-	if available_anomalies.is_empty():
-		reset()
+	
+	_apply_anomaly_sync.rpc(selected_anomaly, payload)
 
 @rpc("authority", "reliable")
 func _request_anomalize() -> void:
@@ -49,31 +45,19 @@ func _request_anomalize() -> void:
 	anomalize()
 
 @rpc("authority", "call_local", "reliable")
-func _apply_anomaly_sync(anomaly_name: StringName, payload: Dictionary = {}) -> void:
-	var selected_anomaly := _get_anomaly_script_by_name(anomaly_name)
-	if selected_anomaly == null:
-		push_warning("Anomaly not found: " + str(anomaly_name))
-		return
-
+func _apply_anomaly_sync(anomaly_name:StringName, payload: Dictionary = {}) -> void:
 	if current_anomaly:
 		current_anomaly.exit_anomaly(self)
 
-	selected_anomaly.enter_anomaly(self, payload)
-	current_anomaly = selected_anomaly
+	anomalies[anomaly_name].enter_anomaly(self, payload)
+	current_anomaly = anomalies[anomaly_name]
 
-func _build_anomaly_payload(anomaly_script: Script) -> Dictionary:
+func _build_anomaly_payload(anomaly_name: StringName) -> Dictionary:
 	var payload: Dictionary = {}
-	var script_ref:Script = load("res://scripts/game/anomalies/dissapeared_furniture.gd")
-	if anomaly_script and anomaly_script.resource_name == script_ref.resource_name:
+	if anomaly_name == &"DISSAPEARED_FURNITURE":
 		if not furniture.is_empty():
 			payload["furniture_index"] = randi_range(0, furniture.size() - 1)
 	return payload
-
-func _get_anomaly_script_by_name(anomaly_name: StringName) -> Script:
-	for anomaly:Script in anomalies:
-		if anomaly.resource_name == anomaly_name:
-			return anomaly
-	return null
 
 func execute_anomaly(anomaly_name:StringName):
 	_apply_anomaly_sync(anomaly_name, {})

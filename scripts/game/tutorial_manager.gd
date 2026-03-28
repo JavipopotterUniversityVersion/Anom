@@ -4,13 +4,15 @@ class_name TutorialManager
 @export var house:HouseManager
 @onready var elevator_button:RoomButton = house.elevator
 @export var tutorial_end_area:Area3D
+@export var skip_tutorial:bool
 
 func trigger() -> void:
-	tutorial_end_area.body_entered.connect(finish_tutorial, CONNECT_ONE_SHOT)
-	elevator_button.blocked = true
-	start_tutorial()
+	if not skip_tutorial: finish_tutorial(null)
 
 func start_tutorial():
+	tutorial_end_area.body_entered.connect(finish_tutorial, CONNECT_ONE_SHOT)
+	elevator_button.blocked = true
+	
 	await GuideUI.show_message("Hola buenas tardes.", 0.5)
 	GuideUI.hide_message()
 	
