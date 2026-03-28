@@ -11,13 +11,14 @@ class_name RoomButton
 @onready var players_container: Node3D = get_tree().get_first_node_in_group(&"PLAYERS_CONTAINER")
 @export var house_manager:HouseManager
 
-const NUMBER_OF_FLOORS:int = 8
+const NUMBER_OF_FLOORS:int = 2
 
 @export var floor_counter:int = 0
 @export var floor_counter_display:Label3D
 
+@export var door_busy: bool = false
+
 var _players_in_room: Dictionary = {}
-var _door_busy: bool = false
 var _local_player_cache: Character = null
 var _missing_players_message_active: bool = false
 
@@ -60,12 +61,28 @@ func _get_local_player() -> Character:
 func interact(character:Character):
 	if blocked: return
 	super(character)
-
+	
 	if not _all_players_in_room():
 		_show_missing_players_message()
 		return
 	
-	var is_correct:bool = house_manager.check_anomaly(character.mark)
+	if door_busy:
+		return
+	
+	if multiplayer.is_server():
+		door_busy = true
+	
+	var anomaly_result:HouseManager.ANOMALY_RESULT = house_manager.check_anomaly(character.mark)
+	
+	_request_activate.rpc()
+	
+	if anomaly_result != HouseManager.ANOMALY_RESULT.NO_ANOMALY:
+		var is_correct:bool = true if anomaly_result == HouseManager.ANOMALY_RESULT.CORRECT else false
+		_update_counter.rpc(is_correct)
+
+@rpc("any_peer", "call_local")
+func _update_counter(is_correct:bool):
+	if not multiplayer.is_server(): return
 	
 	if is_correct: 
 		print("NEXT FLOOR!")
@@ -74,29 +91,14 @@ func interact(character:Character):
 		floor_counter = 0
 		print("WRONG ONE")
 	
-	_update_floor_display()
-	_request_activate()
+	floor_counter_display.text = "FLOOR " + str(floor_counter)
 
 func _show_missing_players_message() -> void:
-	if _missing_players_message_active:
-		return
-	if not GuideUI or not GuideUI.has_method(&"show_message"):
-		return
-
+	if _missing_players_message_active: return
+	
 	_missing_players_message_active = true
-	GuideUI.show_message("Faltan jugadores en el area para usar el boton.", 1.2)
-
-	if GuideUI.has_method(&"hide_message"):
-		var hide_timer := get_tree().create_timer(1.2)
-		hide_timer.timeout.connect(func() -> void:
-			GuideUI.hide_message()
-			_missing_players_message_active = false
-		, CONNECT_ONE_SHOT)
-	else:
-		_missing_players_message_active = false
-
-func _update_floor_display():
-	floor_counter_display.text = "FLOOR " + str(floor_counter)
+	await GuideUI.show_message("Faltan jugadores en el area para usar el boton.", 1.2)
+	_missing_players_message_active = false
 
 func on_cant_interact():
 	_interact_icon.hide()
@@ -105,19 +107,8 @@ func on_can_interact():
 	if blocked: return
 	_interact_icon.show()
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer", "call_local")
 func _request_activate() -> void:
-	if not multiplayer.is_server():
-		return
-	if _door_busy:
-		return
-	if not _all_players_in_room():
-		return
-	_door_busy = true
-	_activate_door.rpc()
-
-@rpc("call_local", "reliable")
-func _activate_door() -> void:
 	reset_doors()
 	close_door()
 	
@@ -130,7 +121,7 @@ func _activate_door() -> void:
 		open_door()
 	
 	if multiplayer.is_server():
-		_door_busy = false
+		door_busy = false
 
 func reset_doors():
 	for o_door in doors:

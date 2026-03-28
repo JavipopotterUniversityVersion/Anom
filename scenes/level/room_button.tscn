@@ -10,6 +10,17 @@ radius = 1.2588217
 [sub_resource type="BoxShape3D" id="BoxShape3D_jg0i1"]
 size = Vector3(6.5689087, 12.107056, 13.490112)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_enkpa"]
+properties/0/path = NodePath("floor_counter_display:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:floor_counter")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:door_busy")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="elevator_button" type="Area3D" unique_id=63760329 node_paths=PackedStringArray("room", "floor_counter_display")]
 collision_layer = 4
 collision_mask = 0
@@ -40,3 +51,6 @@ shape = SubResource("BoxShape3D_jg0i1")
 debug_color = Color(0.5638601, 0.47875887, 0.7625103, 0.41960785)
 
 [node name="floor_counter_display" type="Label3D" parent="." unique_id=2022646677]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2066680009]
+replication_config = SubResource("SceneReplicationConfig_enkpa")

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceincxh02s5gf"
 path.s3tc="res://.godot/imported/evil_javi.jpg-2ab7e6533ca1c088322141682000ea04.s3tc.ctex"
+path.etc2="res://.godot/imported/evil_javi.jpg-2ab7e6533ca1c088322141682000ea04.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/evil_javi.jpg"
-dest_files=["res://.godot/imported/evil_javi.jpg-2ab7e6533ca1c088322141682000ea04.s3tc.ctex"]
+dest_files=["res://.godot/imported/evil_javi.jpg-2ab7e6533ca1c088322141682000ea04.s3tc.ctex", "res://.godot/imported/evil_javi.jpg-2ab7e6533ca1c088322141682000ea04.etc2.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 @onready var animation:AnimationPlayer = $animation
 @onready var guide_text:Label = $guide_panel/guide_text
 @export var time_between_chars:float = 0.01

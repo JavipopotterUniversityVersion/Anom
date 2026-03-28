@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpur6iglbotfe"
 path.s3tc="res://.godot/imported/floor_texture_wooden.jpg-3e9ff84290ba0afdd12e9ce1523fe214.s3tc.ctex"
+path.etc2="res://.godot/imported/floor_texture_wooden.jpg-3e9ff84290ba0afdd12e9ce1523fe214.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/meshes/house/floor/floor_texture_wooden.jpg"
-dest_files=["res://.godot/imported/floor_texture_wooden.jpg-3e9ff84290ba0afdd12e9ce1523fe214.s3tc.ctex"]
+dest_files=["res://.godot/imported/floor_texture_wooden.jpg-3e9ff84290ba0afdd12e9ce1523fe214.s3tc.ctex", "res://.godot/imported/floor_texture_wooden.jpg-3e9ff84290ba0afdd12e9ce1523fe214.etc2.ctex"]
 
 [params]
 

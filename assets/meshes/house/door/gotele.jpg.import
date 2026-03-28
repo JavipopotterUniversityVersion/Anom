@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnmaf4kex5lyk"
 path.s3tc="res://.godot/imported/gotele.jpg-9777b41e597fa7e6d507162b7d98296e.s3tc.ctex"
+path.etc2="res://.godot/imported/gotele.jpg-9777b41e597fa7e6d507162b7d98296e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/meshes/house/door/gotele.jpg"
-dest_files=["res://.godot/imported/gotele.jpg-9777b41e597fa7e6d507162b7d98296e.s3tc.ctex"]
+dest_files=["res://.godot/imported/gotele.jpg-9777b41e597fa7e6d507162b7d98296e.s3tc.ctex", "res://.godot/imported/gotele.jpg-9777b41e597fa7e6d507162b7d98296e.etc2.ctex"]
 
 [params]
 

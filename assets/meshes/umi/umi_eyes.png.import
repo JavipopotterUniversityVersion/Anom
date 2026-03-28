@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq5c8l0mqxqkq"
 path.s3tc="res://.godot/imported/umi_eyes.png-0941bd4cfc014995e9349db460fb8258.s3tc.ctex"
+path.etc2="res://.godot/imported/umi_eyes.png-0941bd4cfc014995e9349db460fb8258.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/meshes/umi/umi_eyes.png"
-dest_files=["res://.godot/imported/umi_eyes.png-0941bd4cfc014995e9349db460fb8258.s3tc.ctex"]
+dest_files=["res://.godot/imported/umi_eyes.png-0941bd4cfc014995e9349db460fb8258.s3tc.ctex", "res://.godot/imported/umi_eyes.png-0941bd4cfc014995e9349db460fb8258.etc2.ctex"]
 
 [params]
 

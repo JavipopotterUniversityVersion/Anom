@@ -14,16 +14,20 @@ class_name HouseManager
 var available_anomalies:Array[StringName]
 var current_anomaly
 
+enum ANOMALY_RESULT {
+	NO_ANOMALY, CORRECT, INCORRECT
+}
+
 func _ready() -> void:
 	reset()
 
 func reset():
 	available_anomalies = anomalies.keys()
 
-func check_anomaly(mark:Decal) -> bool:
-	if not current_anomaly: return false
+func check_anomaly(mark:Decal) -> ANOMALY_RESULT:
+	if not current_anomaly: return ANOMALY_RESULT.NO_ANOMALY
 	var is_correct:bool = current_anomaly.check_mark(mark)
-	return is_correct
+	return ANOMALY_RESULT.CORRECT if is_correct else ANOMALY_RESULT.INCORRECT
 
 func anomalize():
 	if not multiplayer.is_server():

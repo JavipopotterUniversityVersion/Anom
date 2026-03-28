@@ -9,11 +9,11 @@ static func exit_anomaly(_house:HouseManager):
 	pass
 
 static func check_mark(mark: Decal) -> bool:
+	if not mark.visible: return false
+	
 	var mark_aabb := mark.get_aabb()
 	var anomaly_aabb = anomaly.get_aabb()
 	mark_aabb.position = mark_aabb.position + mark.global_position
-	
-	print(mark_aabb)
 	
 	var is_correct := mark_aabb.intersects(anomaly_aabb)
 	mark.hide()
