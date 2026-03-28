@@ -17,6 +17,7 @@ class_name RoomButton
 var _players_in_room: Dictionary = {}
 var _door_busy: bool = false
 var _local_player_cache: Character = null
+var _missing_players_message_active: bool = false
 
 func _ready() -> void:
 	if room:
@@ -57,6 +58,10 @@ func _get_local_player() -> Character:
 func interact(character:Character):
 	if blocked: return
 	super(character)
+
+	if not _all_players_in_room():
+		_show_missing_players_message()
+		return
 	
 	var is_correct:bool = house_manager.check_anomaly(character.mark)
 	
@@ -69,6 +74,24 @@ func interact(character:Character):
 	
 	_update_floor_display()
 	_request_activate()
+
+func _show_missing_players_message() -> void:
+	if _missing_players_message_active:
+		return
+	if not GuideUI or not GuideUI.has_method(&"show_message"):
+		return
+
+	_missing_players_message_active = true
+	GuideUI.show_message("Faltan jugadores en el area para usar el boton.", 1.2)
+
+	if GuideUI.has_method(&"hide_message"):
+		var hide_timer := get_tree().create_timer(1.2)
+		hide_timer.timeout.connect(func() -> void:
+			GuideUI.hide_message()
+			_missing_players_message_active = false
+		, CONNECT_ONE_SHOT)
+	else:
+		_missing_players_message_active = false
 
 func _update_floor_display():
 	floor_counter_display.text = "FLOOR " + str(floor_counter)

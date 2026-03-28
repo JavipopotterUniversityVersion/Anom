@@ -230,13 +230,13 @@ script = ExtResource("3_j5sw6")
 frame = -1
 metadata/_custom_type_script = "uid://db0f6joldlpdj"
 
-[node name="umi_idle_0" parent="UMI/AnimationHandler/Idle" unique_id=930193102 instance=ExtResource("4_rkxmf")]
+[node name="umi_idle_0" parent="UMI/AnimationHandler/Idle" unique_id=930193102 groups=["MATERIAL_TARGETS"] instance=ExtResource("4_rkxmf")]
 visible = false
 
-[node name="umi_idle_1" parent="UMI/AnimationHandler/Idle" unique_id=1565169095 instance=ExtResource("5_rn12b")]
+[node name="umi_idle_1" parent="UMI/AnimationHandler/Idle" unique_id=1565169095 groups=["MATERIAL_TARGETS"] instance=ExtResource("5_rn12b")]
 visible = false
 
-[node name="umi_idle_2" parent="UMI/AnimationHandler/Idle" unique_id=1959569567 instance=ExtResource("6_rkxmf")]
+[node name="umi_idle_2" parent="UMI/AnimationHandler/Idle" unique_id=1959569567 groups=["MATERIAL_TARGETS"] instance=ExtResource("6_rkxmf")]
 visible = false
 
 [node name="Walk" type="Node3D" parent="UMI/AnimationHandler" unique_id=320994887]
@@ -244,16 +244,16 @@ script = ExtResource("3_j5sw6")
 frame = -1
 metadata/_custom_type_script = "uid://db0f6joldlpdj"
 
-[node name="umi_walk_0" parent="UMI/AnimationHandler/Walk" unique_id=377683007 instance=ExtResource("7_j5sw6")]
+[node name="umi_walk_0" parent="UMI/AnimationHandler/Walk" unique_id=377683007 groups=["MATERIAL_TARGETS"] instance=ExtResource("7_j5sw6")]
 visible = false
 
-[node name="umi_walk_1" parent="UMI/AnimationHandler/Walk" unique_id=737436881 instance=ExtResource("8_dfwlv")]
+[node name="umi_walk_1" parent="UMI/AnimationHandler/Walk" unique_id=737436881 groups=["MATERIAL_TARGETS"] instance=ExtResource("8_dfwlv")]
 visible = false
 
-[node name="umi_walk_2" parent="UMI/AnimationHandler/Walk" unique_id=1982918413 instance=ExtResource("9_kwyxx")]
+[node name="umi_walk_2" parent="UMI/AnimationHandler/Walk" unique_id=1982918413 groups=["MATERIAL_TARGETS"] instance=ExtResource("9_kwyxx")]
 visible = false
 
-[node name="umi_walk_3" parent="UMI/AnimationHandler/Walk" unique_id=1837533665 instance=ExtResource("10_wt6il")]
+[node name="umi_walk_3" parent="UMI/AnimationHandler/Walk" unique_id=1837533665 groups=["MATERIAL_TARGETS"] instance=ExtResource("10_wt6il")]
 visible = false
 
 [node name="Run" type="Node3D" parent="UMI/AnimationHandler" unique_id=443360210]
@@ -261,16 +261,16 @@ script = ExtResource("3_j5sw6")
 frame = -1
 metadata/_custom_type_script = "uid://db0f6joldlpdj"
 
-[node name="umi_run_0" parent="UMI/AnimationHandler/Run" unique_id=1904710095 instance=ExtResource("11_5w5vk")]
+[node name="umi_run_0" parent="UMI/AnimationHandler/Run" unique_id=1904710095 groups=["MATERIAL_TARGETS"] instance=ExtResource("11_5w5vk")]
 visible = false
 
-[node name="umi_run_1" parent="UMI/AnimationHandler/Run" unique_id=1532281293 instance=ExtResource("12_3wkc1")]
+[node name="umi_run_1" parent="UMI/AnimationHandler/Run" unique_id=1532281293 groups=["MATERIAL_TARGETS"] instance=ExtResource("12_3wkc1")]
 visible = false
 
-[node name="umi_run_2" parent="UMI/AnimationHandler/Run" unique_id=393887294 instance=ExtResource("13_ixf42")]
+[node name="umi_run_2" parent="UMI/AnimationHandler/Run" unique_id=393887294 groups=["MATERIAL_TARGETS"] instance=ExtResource("13_ixf42")]
 visible = false
 
-[node name="umi_run_3" parent="UMI/AnimationHandler/Run" unique_id=1511726600 instance=ExtResource("14_cpyjp")]
+[node name="umi_run_3" parent="UMI/AnimationHandler/Run" unique_id=1511726600 groups=["MATERIAL_TARGETS"] instance=ExtResource("14_cpyjp")]
 visible = false
 
 [node name="player_inputs" type="Node" parent="." unique_id=1803103782 node_paths=PackedStringArray("mark", "light", "ray")]
@@ -280,6 +280,7 @@ light = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/light")
 ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/mark_ray")
 
 [node name="mark_pivot" type="Node3D" parent="player_inputs" unique_id=1130084135]
+visible = false
 
 [node name="mark" parent="player_inputs/mark_pivot" unique_id=600274410 instance=ExtResource("19_ef487")]
 transform = Transform3D(2.2222223, 0, 0, 0, -9.713642e-08, -2.2222223, 0, 2.2222223, -9.713642e-08, 0, 0, 0)

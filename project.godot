@@ -36,6 +36,10 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mesh_material_assigner/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -50,6 +54,7 @@ folder_colors={
 
 PLAYERS_CONTAINER=""
 PLAYER=""
+MATERIAL_TARGETS=""
 
 [input]
 
