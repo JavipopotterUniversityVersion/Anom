@@ -1,7 +1,7 @@
 class_name Anomaly
 static var anomaly:AnomalyObject
 
-static func enter_anomaly(_house:HouseManager):
+static func enter_anomaly(_house:HouseManager, _payload: Dictionary = {}):
 	print("\n" + anomaly.name)
 	print(str(anomaly.get_aabb()) + "\n")
 

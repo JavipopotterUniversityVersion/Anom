@@ -1,7 +1,7 @@
 extends Anomaly
 class_name SmallerFloor
 
-static func enter_anomaly(house:HouseManager):
+static func enter_anomaly(house:HouseManager, _payload: Dictionary = {}):
 	anomaly = house.wooden_floor
 	
 	print("\n" + anomaly.name)
