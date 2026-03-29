@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://baai6xeahp3sc"]
 
 [ext_resource type="Texture2D" uid="uid://dyqvb5t2pxfi3" path="res://assets/meshes/house/door/wood.jpg" id="1_6u327"]
-[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_h67er"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/anomaly/anomaly_objects/furniture.gd" id="1_h67er"]
 [ext_resource type="Texture2D" uid="uid://gpcpyimu1rp0" path="res://assets/meshes/house/floor/floor_texture.jpg" id="1_ux5y7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lltyi"]

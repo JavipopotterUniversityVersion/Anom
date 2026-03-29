@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ds2iwyqi1w5v0" path="res://assets/meshes/umi/run/umi_run_3.glb" id="14_cpyjp"]
 [ext_resource type="Script" uid="uid://n28g53qr7a8q" path="res://scripts/game/player_inputs.gd" id="18_tee1q"]
 [ext_resource type="PackedScene" uid="uid://qw7xeotl0k2a" path="res://assets/prefabs/mark.tscn" id="19_ef487"]
+[ext_resource type="Texture2D" uid="uid://b4lui7uv2886a" path="res://assets/images/mark.png" id="21_wrld3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhcd7"]
 radius = 0.57177734
@@ -282,3 +283,5 @@ ray = NodePath("../SpringArmOffset/SpringArm3D/Camera3D/mark_ray")
 
 [node name="mark" parent="player_inputs/mark_pivot" unique_id=600274410 instance=ExtResource("19_ef487")]
 transform = Transform3D(2.2222223, 0, 0, 0, -9.713642e-08, -2.2222223, 0, 2.2222223, -9.713642e-08, 0, 0, 0)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("21_wrld3")

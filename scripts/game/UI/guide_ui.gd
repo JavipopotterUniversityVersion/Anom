@@ -11,7 +11,8 @@ var stop:bool = false:
 			return true
 		else: return false
 
-func show_message(text:String, wait_time:float):
+@rpc("any_peer", "call_local", "reliable")
+func show_message(text:String, wait_time:float, auto_hide:bool = false):
 	stop = false
 	guide_text.visible_characters = 0
 	
@@ -27,7 +28,9 @@ func show_message(text:String, wait_time:float):
 		if stop: break
 	
 	await get_tree().create_timer(wait_time).timeout
+	if auto_hide: hide_message()
 
+@rpc("any_peer", "call_local", "reliable")
 func hide_message():
 	opened = false
 	animation.play(&"HideGuide")

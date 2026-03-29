@@ -13,7 +13,9 @@ static func check_mark(mark: Decal) -> bool:
 	
 	var mark_aabb := mark.get_aabb()
 	var anomaly_aabb = anomaly.get_aabb()
+	
 	mark_aabb.position = mark_aabb.position + mark.global_position
+	mark_aabb.size *= 1.5
 	
 	var is_correct := mark_aabb.intersects(anomaly_aabb)
 	mark.hide()

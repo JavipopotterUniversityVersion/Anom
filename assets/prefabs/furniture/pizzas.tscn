@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://df5vod2ni4uof"]
+
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/anomaly/anomaly_objects/furniture.gd" id="1_hx3hg"]
+[ext_resource type="Texture2D" uid="uid://c0v6fpeifpqqy" path="res://assets/images/del_pobre.jpg" id="2_mwgpa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nv75"]
+albedo_texture = ExtResource("2_mwgpa")
+uv1_scale = Vector3(-1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avvku"]
+size = Vector3(3.8052368, 3.0877686, 4.404297)
+
+[node name="pizzas" type="Node3D" unique_id=1480418626 node_paths=PackedStringArray("colliders", "shapes")]
+script = ExtResource("1_hx3hg")
+colliders = [NodePath("StaticBody3D/col")]
+shapes = [NodePath("StaticBody3D/col")]
+
+[node name="del_pobre3" type="CSGBox3D" parent="." unique_id=1791724546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44091797, 0)
+size = Vector3(3, 0.5, 3)
+material = SubResource("StandardMaterial3D_6nv75")
+
+[node name="del_pobre4" type="CSGBox3D" parent="." unique_id=1040191745]
+transform = Transform3D(0.96103525, 0, -0.27642578, 0, 1, 0, 0.27642578, 0, 0.96103525, 0, 0.06372213, 0)
+size = Vector3(3, 0.5, 3)
+material = SubResource("StandardMaterial3D_6nv75")
+
+[node name="del_pobre5" type="CSGBox3D" parent="." unique_id=1873959976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56862354, 0)
+size = Vector3(3, 0.5, 3)
+material = SubResource("StandardMaterial3D_6nv75")
+
+[node name="del_pobre6" type="CSGBox3D" parent="." unique_id=273438463]
+transform = Transform3D(0.28690922, 0, -0.9579579, 0, 1, 0, 0.9579579, 0, 0.28690922, 0, 1.0732636, 0)
+size = Vector3(3, 0.5, 3)
+material = SubResource("StandardMaterial3D_6nv75")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1297608194]
+
+[node name="col" type="CollisionShape3D" parent="StaticBody3D" unique_id=1059837987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011566162, 0.28216648, 0.3203125)
+shape = SubResource("BoxShape3D_avvku")
+debug_color = Color(0, 0.6, 0.69803923, 0)

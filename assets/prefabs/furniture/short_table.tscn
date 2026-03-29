@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dhyosl7b0ict7"]
 
-[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="1_2erb3"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/anomaly/anomaly_objects/furniture.gd" id="1_2erb3"]
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_4tuat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yaxs"]

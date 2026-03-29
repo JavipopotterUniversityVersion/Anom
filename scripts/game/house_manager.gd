@@ -4,6 +4,7 @@ class_name HouseManager
 @export var elevator:RoomButton
 @export var anomalies:Dictionary[StringName, Script]
 @export var furniture:Array[Furniture]
+@export var anomaly_furniture:Array[Furniture]
 @export var doll:DollAnomalyObject
 @export var wooden_floor:AnomalyObject
 @export var peripheral_material_object:PeripheralMaterialAnomalyObject
@@ -20,6 +21,10 @@ enum ANOMALY_RESULT {
 }
 
 func _ready() -> void:
+	for anomaly in anomaly_furniture:
+		anomaly.hide()
+		anomaly.disable_colliders()
+		
 	reset()
 
 func reset():

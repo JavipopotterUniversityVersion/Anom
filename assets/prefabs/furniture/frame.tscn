@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0c0fvme0feeg"]
 
-[ext_resource type="Script" uid="uid://jjg3tbyugppw" path="res://scripts/game/anomalies/anomaly_objects/peripheral_material_anomaly_object.gd" id="1_iegip"]
+[ext_resource type="Script" uid="uid://jjg3tbyugppw" path="res://scripts/game/anomaly/anomaly_objects/peripheral_material_anomaly_object.gd" id="1_iegip"]
 [ext_resource type="Texture2D" uid="uid://cjhdmyn4s64mv" path="res://assets/images/javi.jpg" id="2_sfedc"]
 [ext_resource type="Texture2D" uid="uid://ceincxh02s5gf" path="res://assets/images/evil_javi.jpg" id="3_as6kx"]
 

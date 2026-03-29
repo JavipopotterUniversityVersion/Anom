@@ -85,11 +85,11 @@ func _update_counter(is_correct:bool):
 	if not multiplayer.is_server(): return
 	
 	if is_correct: 
-		print("NEXT FLOOR!")
+		GuideUI.show_message.rpc("Correcto, siguiente piso", 1.0, true)
 		floor_counter += 1
-	else:  
+	else:
+		GuideUI.show_message.rpc("Anomalía incorrecta", 1.0, true)
 		floor_counter = 0
-		print("WRONG ONE")
 	
 	floor_counter_display.text = "FLOOR " + str(floor_counter)
 

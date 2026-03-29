@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bgrcvbk3brr8j"]
 
-[ext_resource type="Script" uid="uid://c82an0j6ndcu2" path="res://scripts/game/anomalies/anomaly_objects/doll.gd" id="1_r4d4l"]
+[ext_resource type="Script" uid="uid://c82an0j6ndcu2" path="res://scripts/game/anomaly/anomaly_objects/doll.gd" id="1_r4d4l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyb4"]
 resource_name = "Material.008"

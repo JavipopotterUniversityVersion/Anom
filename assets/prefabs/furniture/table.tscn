@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dxdqfa1jaj12w"]
 
 [ext_resource type="Texture2D" uid="uid://ckigfage8p01o" path="res://assets/meshes/house/door/wood_2.jpg" id="1_jv1ao"]
-[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/furniture.gd" id="2_6p64w"]
+[ext_resource type="Script" uid="uid://d2ygxaqah70pd" path="res://scripts/game/anomaly/anomaly_objects/furniture.gd" id="2_6p64w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o3vg"]
 albedo_color = Color(0.62152386, 0.62152386, 0.6215238, 1)
