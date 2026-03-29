@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dhyosl7b0ict7" path="res://assets/prefabs/furniture/short_table.tscn" id="7_2cyr1"]
 [ext_resource type="PackedScene" uid="uid://f7b770a5bia6" path="res://assets/prefabs/furniture/bin.tscn" id="8_17fyk"]
 [ext_resource type="PackedScene" uid="uid://m2crbftc5ake" path="res://assets/prefabs/furniture/table_night.tscn" id="9_1v3ks"]
+[ext_resource type="Texture2D" uid="uid://cch5hj4vc130u" path="res://assets/images/eelvator_inside.jpg" id="9_1wb3m"]
+[ext_resource type="Texture2D" uid="uid://cjoi4pwdpp3db" path="res://assets/meshes/house/door/gotele_2.jpg" id="10_muh02"]
 [ext_resource type="PackedScene" uid="uid://dda3yrk4013md" path="res://assets/prefabs/furniture/drawer.tscn" id="10_vxkvu"]
 [ext_resource type="PackedScene" uid="uid://dxdqfa1jaj12w" path="res://assets/prefabs/furniture/table.tscn" id="11_hp1e1"]
 [ext_resource type="PackedScene" uid="uid://baai6xeahp3sc" path="res://assets/prefabs/furniture/entrance_table.tscn" id="12_c2qmm"]
@@ -29,6 +31,20 @@
 [ext_resource type="PackedScene" uid="uid://d0c0fvme0feeg" path="res://assets/prefabs/furniture/frame.tscn" id="25_lv6ox"]
 [ext_resource type="PackedScene" uid="uid://df5vod2ni4uof" path="res://assets/prefabs/furniture/pizzas.tscn" id="26_k8s0d"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3vfl"]
+albedo_texture = ExtResource("9_1wb3m")
+roughness_texture = ExtResource("10_muh02")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6ayy"]
+albedo_texture = ExtResource("10_muh02")
+roughness_texture = ExtResource("10_muh02")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpvw8"]
 albedo_color = Color(0.646029, 0.646029, 0.646029, 1)
 albedo_texture = ExtResource("14_rr7fe")
@@ -42,6 +58,11 @@ uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_00bt7"]
 size = Vector3(29.821838, 1, 55.736595)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wb3m"]
+albedo_texture = ExtResource("9_1wb3m")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8pwa"]
 
@@ -118,16 +139,16 @@ size = Vector3(8.376541, 18.92865, 17.603516)
 material = ExtResource("13_38hno")
 
 [node name="elevator_box" type="CSGBox3D" parent="house/house_base" unique_id=259602873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.056652, -3.2663908, 20.089905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.056652, -5.335895, 20.089909)
 operation = 2
-size = Vector3(6.437519, 18.92865, 14.643969)
-material = ExtResource("13_38hno")
+size = Vector3(6.437519, 14.789642, 14.643969)
+material = SubResource("StandardMaterial3D_r3vfl")
 
 [node name="elevator_door_box" type="CSGBox3D" parent="house/house_base" unique_id=1230581127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.036495, -5.901471, 12.886284)
 operation = 2
 size = Vector3(6.2245674, 13.658493, 7.692766)
-material = ExtResource("13_38hno")
+material = SubResource("StandardMaterial3D_p6ayy")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="house/house_base" unique_id=925748944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3606262, -3.2663908, -21.374805)
@@ -166,8 +187,8 @@ material = SubResource("StandardMaterial3D_jpvw8")
 script = ExtResource("18_00bt7")
 
 [node name="floor" type="CSGBox3D" parent="house" unique_id=302317968 node_paths=PackedStringArray("shapes")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.808964, 0, -40.662548)
-size = Vector3(69, 1, 85.62409)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.808964, 0, -56.137978)
+size = Vector3(69, 1, 54.673233)
 material = SubResource("StandardMaterial3D_icp6u")
 script = ExtResource("18_00bt7")
 shapes = [NodePath("shape"), null]
@@ -181,6 +202,11 @@ size = Vector3(39.232742, 1, 23.752209)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.540123, 0, -14.981747)
 shape = SubResource("BoxShape3D_00bt7")
 debug_color = Color(0.7137255, 0.40784314, 0.6901961, 0)
+
+[node name="elevator_floor" type="CSGBox3D" parent="house" unique_id=366498456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0304604, 0, -20.878054)
+size = Vector3(9.442993, 1, 16.21473)
+material = SubResource("StandardMaterial3D_1wb3m")
 
 [node name="props" type="Node3D" parent="house" unique_id=1954606015]
 
@@ -217,7 +243,7 @@ transform = Transform3D(-4.4512955e-08, 0, -1, 0, 1.0396119, 0, 1.0183376, 0, -4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.389004, 6.745001, -57.460953)
 
 [node name="main_door" parent="house/props" unique_id=515195871 instance=ExtResource("14_k8s0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.055, 6.745001, -28.702953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.033118, 6.745001, -28.733921)
 metadata/BLOCKED = true
 
 [node name="doll" parent="house/props" unique_id=91175468 instance=ExtResource("1_dvltn")]

@@ -231,7 +231,6 @@ frame = -1
 metadata/_custom_type_script = "uid://db0f6joldlpdj"
 
 [node name="umi_idle_0" parent="UMI/AnimationHandler/Idle" unique_id=930193102 groups=["MATERIAL_TARGETS"] instance=ExtResource("4_rkxmf")]
-visible = false
 
 [node name="umi_idle_1" parent="UMI/AnimationHandler/Idle" unique_id=1565169095 groups=["MATERIAL_TARGETS"] instance=ExtResource("5_rn12b")]
 visible = false

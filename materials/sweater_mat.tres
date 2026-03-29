@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://blqt23xa56x7m"]
+
+[ext_resource type="Texture2D" uid="uid://btxm17y7e8ijl" path="res://assets/images/sweater_tex.jpg" id="1_dddgd"]
+
+[resource]
+albedo_color = Color(0.5882353, 0.72156864, 0.78039217, 1)
+albedo_texture = ExtResource("1_dddgd")
+uv1_scale = Vector3(50, 50, 50)
+uv1_triplanar = true
