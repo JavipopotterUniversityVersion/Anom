@@ -73,15 +73,6 @@ func execute_anomaly(anomaly_name:StringName):
 	selected_anomaly = anomaly_name
 	_apply_anomaly_sync(anomaly_name, {})
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("anomalize"):
-		if multiplayer.is_server():
-			anomalize()
-		else:
-			_request_anomalize.rpc_id(1)
-	elif event.is_action_pressed("end_game"):
-		end()
-
 func end():
 	house.queue_free()
 	var final_obj = final.instantiate()
