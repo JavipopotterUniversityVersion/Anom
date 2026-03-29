@@ -11,6 +11,19 @@ class_name Level
 var chat_visible = false
 var inventory_visible = false
 
+# Debug command system
+var anomaly_aliases: Dictionary = {
+	"furniture": &"DISSAPEARED_FURNITURE",
+	"dissapeared_furniture": &"DISSAPEARED_FURNITURE",
+	"dissapeared": &"DISSAPEARED_FURNITURE",
+	"doll": &"DOLL",
+	"peripheral": &"PERIPHERIAL",
+	"peripheral_material": &"PERIPHERIAL",
+	"peripherial": &"PERIPHERIAL",
+	"floor": &"SMALL_FLOOR",
+	"small_floor": &"SMALL_FLOOR",
+}
+
 func _ready():
 	if DisplayServer.get_name() == "headless":
 		print("Dedicated server starting...")
@@ -109,8 +122,135 @@ func _on_chat_message_sent(message_text: String) -> void:
 	if trimmed_message == "":
 		return # do not send empty messages
 
+	# Handle debug commands
+	if trimmed_message.begins_with("/"):
+		_execute_debug_command(trimmed_message)
+		return  # Don't broadcast debug commands
+	
 	var nick = Network.players[multiplayer.get_unique_id()]["nick"]
 	rpc("msg_rpc", nick, trimmed_message)
+
+func _execute_debug_command(command_text: String) -> void:
+	# Parse command: /command arg1 arg2 ...
+	var parts = command_text.trim_prefix("/").split(" ")
+	var command = parts[0].to_lower()
+	var args = parts.slice(1) if parts.size() > 1 else []
+	
+	match command:
+		"anom":
+			_handle_anom_command(args)
+		"help":
+			_show_help()
+		_:
+			GuideUI.show_message("Comando desconocido: %s. Usa /help para ver comandos." % command, 3.0)
+
+func _handle_anom_command(args: Array) -> void:
+	# Only server can execute anomalies
+	if not multiplayer.is_server():
+		GuideUI.show_message("Solo el servidor puede ejecutar anomalías.", 3.0)
+		return
+	
+	# Get reference to house manager
+	var house_manager = _get_house_manager()
+	if not house_manager:
+		GuideUI.show_message("Error: No se encontró HouseManager.", 3.0)
+		return
+	
+	if args.is_empty():
+		GuideUI.show_message("Uso: /anom [nombre|random|list|current|reset]", 3.0)
+		return
+	
+	var subcommand = args[0].to_lower()
+	
+	match subcommand:
+		"list":
+			_show_anomaly_list(house_manager)
+		"current":
+			_show_current_anomaly(house_manager)
+		"reset":
+			_reset_anomalies(house_manager)
+		"random":
+			_trigger_random_anomaly(house_manager)
+		_:
+			_trigger_specific_anomaly(house_manager, subcommand)
+
+func _trigger_specific_anomaly(house_manager: HouseManager, anomaly_name: String) -> void:
+	var anomaly_name_lower = anomaly_name.to_lower()
+	
+	# Check if it's an alias
+	if anomaly_aliases.has(anomaly_name_lower):
+		var actual_anomaly = anomaly_aliases[anomaly_name_lower]
+		
+		# Check if anomaly exists
+		if not house_manager.anomalies.has(actual_anomaly):
+			GuideUI.show_message("Anomalía no encontrada: %s" % anomaly_name, 3.0)
+			return
+		
+		# Build payload
+		var payload = house_manager._build_anomaly_payload(actual_anomaly)
+		
+		# Execute via RPC
+		house_manager._apply_anomaly_sync.rpc(actual_anomaly, payload)
+		GuideUI.show_message("✓ Anomalía ejecutada: %s" % anomaly_name, 2.0)
+	else:
+		GuideUI.show_message("Anomalía desconocida: %s. Usa /anom list" % anomaly_name, 3.0)
+
+func _trigger_random_anomaly(house_manager: HouseManager) -> void:
+	house_manager.anomalize()
+	GuideUI.show_message("✓ Anomalía aleatoria ejecutada", 2.0)
+
+func _show_anomaly_list(house_manager: HouseManager) -> void:
+	var list_text = "Anomalías disponibles:\n"
+	for anomaly_key in house_manager.anomalies.keys():
+		list_text += "  • %s\n" % _format_anomaly_name(anomaly_key)
+	list_text += "\nAliases: furniture, doll, peripheral, floor, random"
+	GuideUI.show_message(list_text, 5.0)
+
+func _show_current_anomaly(house_manager: HouseManager) -> void:
+	if house_manager.current_anomaly:
+		GuideUI.show_message("Anomalía actual: %s" % _format_anomaly_name(house_manager.current_anomaly), 3.0)
+	else:
+		GuideUI.show_message("No hay anomalía activa actualmente.", 3.0)
+
+func _reset_anomalies(house_manager: HouseManager) -> void:
+	house_manager.reset()
+	GuideUI.show_message("✓ Anomalías resetadas", 2.0)
+
+func _format_anomaly_name(anomaly_key: StringName) -> String:
+	match anomaly_key:
+		&"DISSAPEARED_FURNITURE":
+			return "Muebles Desaparecidos (furniture)"
+		&"DOLL":
+			return "Muñeca (doll)"
+		&"PERIPHERIAL":
+			return "Material Periférico (peripheral)"
+		&"SMALL_FLOOR":
+			return "Piso Pequeño (floor)"
+		_:
+			return str(anomaly_key)
+
+func _get_house_manager() -> HouseManager:
+	# Try to find HouseManager in the scene tree
+	var scene_root = get_tree().root
+	for child in scene_root.get_children():
+		if child is HouseManager:
+			return child
+		var found = child.find_child("HouseManager", true, false)
+		if found:
+			return found as HouseManager
+	return null
+
+func _show_help() -> void:
+	var help_text = """Comandos disponibles:
+/anom [nombre]  - Ejecuta anomalía específica
+/anom random    - Ejecuta anomalía aleatoria
+/anom list      - Lista todas las anomalías
+/anom current   - Muestra anomalía activa
+/anom reset     - Resetea anomalías disponibles
+/help           - Muestra este mensaje
+
+Aliases: furniture, doll, peripheral, floor"""
+	GuideUI.show_message(help_text, 6.0)
 
 @rpc("any_peer", "call_local")
 func msg_rpc(nick, msg):
@@ -141,6 +281,13 @@ func _notification(what):
 		print("  B - Toggle inventory")
 		print("  F1 - Add random test item (debug)")
 		print("  F2 - Print inventory contents (debug)")
+		print("\nDebug Commands (chat):")
+		print("  /help - Show all available commands")
+		print("  /anom [name] - Execute specific anomaly")
+		print("  /anom random - Execute random anomaly")
+		print("  /anom list - List all anomalies")
+		print("  /anom current - Show current anomaly")
+		print("  /anom reset - Reset anomalies")
 
 func _on_inventory_closed():
 	inventory_visible = false
