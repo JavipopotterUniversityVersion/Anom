@@ -7,6 +7,7 @@ class_name Level
 
 @onready var multiplayer_chat: MultiplayerChatUI = $MultiplayerChatUI
 @onready var inventory_ui: InventoryUI = $InventoryUI
+@export var house_manager:HouseManager
 
 var chat_visible = false
 var inventory_visible = false
@@ -151,7 +152,6 @@ func _handle_anom_command(args: Array) -> void:
 		return
 	
 	# Get reference to house manager
-	var house_manager = _get_house_manager()
 	if not house_manager:
 		GuideUI.show_message("Error: No se encontró HouseManager.", 3.0)
 		return
@@ -164,17 +164,17 @@ func _handle_anom_command(args: Array) -> void:
 	
 	match subcommand:
 		"list":
-			_show_anomaly_list(house_manager)
+			_show_anomaly_list()
 		"current":
-			_show_current_anomaly(house_manager)
+			_show_current_anomaly()
 		"reset":
-			_reset_anomalies(house_manager)
+			_reset_anomalies()
 		"random":
-			_trigger_random_anomaly(house_manager)
+			_trigger_random_anomaly()
 		_:
-			_trigger_specific_anomaly(house_manager, subcommand)
+			_trigger_specific_anomaly(subcommand)
 
-func _trigger_specific_anomaly(house_manager: HouseManager, anomaly_name: String) -> void:
+func _trigger_specific_anomaly(anomaly_name: String) -> void:
 	var anomaly_name_lower = anomaly_name.to_lower()
 	
 	# Check if it's an alias
@@ -195,24 +195,24 @@ func _trigger_specific_anomaly(house_manager: HouseManager, anomaly_name: String
 	else:
 		GuideUI.show_message("Anomalía desconocida: %s. Usa /anom list" % anomaly_name, 3.0)
 
-func _trigger_random_anomaly(house_manager: HouseManager) -> void:
+func _trigger_random_anomaly() -> void:
 	house_manager.anomalize()
 	GuideUI.show_message("✓ Anomalía aleatoria ejecutada", 2.0)
 
-func _show_anomaly_list(house_manager: HouseManager) -> void:
+func _show_anomaly_list() -> void:
 	var list_text = "Anomalías disponibles:\n"
 	for anomaly_key in house_manager.anomalies.keys():
 		list_text += "  • %s\n" % _format_anomaly_name(anomaly_key)
 	list_text += "\nAliases: furniture, doll, peripheral, floor, random"
 	GuideUI.show_message(list_text, 5.0)
 
-func _show_current_anomaly(house_manager: HouseManager) -> void:
+func _show_current_anomaly() -> void:
 	if house_manager.current_anomaly:
-		GuideUI.show_message("Anomalía actual: %s" % _format_anomaly_name(house_manager.current_anomaly), 3.0)
+		GuideUI.show_message("Anomalía actual: %s" % _format_anomaly_name(house_manager.selected_anomaly), 3.0)
 	else:
 		GuideUI.show_message("No hay anomalía activa actualmente.", 3.0)
 
-func _reset_anomalies(house_manager: HouseManager) -> void:
+func _reset_anomalies() -> void:
 	house_manager.reset()
 	GuideUI.show_message("✓ Anomalías resetadas", 2.0)
 
@@ -228,17 +228,6 @@ func _format_anomaly_name(anomaly_key: StringName) -> String:
 			return "Piso Pequeño (floor)"
 		_:
 			return str(anomaly_key)
-
-func _get_house_manager() -> HouseManager:
-	# Try to find HouseManager in the scene tree
-	var scene_root = get_tree().root
-	for child in scene_root.get_children():
-		if child is HouseManager:
-			return child
-		var found = child.find_child("HouseManager", true, false)
-		if found:
-			return found as HouseManager
-	return null
 
 func _show_help() -> void:
 	var help_text = """Comandos disponibles:

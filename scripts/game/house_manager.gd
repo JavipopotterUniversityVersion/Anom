@@ -12,6 +12,7 @@ class_name HouseManager
 @export var final:PackedScene
 
 var available_anomalies:Array[StringName]
+var selected_anomaly:StringName
 var current_anomaly
 
 enum ANOMALY_RESULT {
@@ -37,8 +38,8 @@ func anomalize():
 		reset()
 
 	var anomaly_index:int = randi_range(0, available_anomalies.size() - 1)
-	var selected_anomaly:StringName = available_anomalies.pop_at(anomaly_index)
 	var payload := _build_anomaly_payload(selected_anomaly)
+	selected_anomaly = available_anomalies.pop_at(anomaly_index)
 	
 	_apply_anomaly_sync.rpc(selected_anomaly, payload)
 
@@ -64,6 +65,7 @@ func _build_anomaly_payload(anomaly_name: StringName) -> Dictionary:
 	return payload
 
 func execute_anomaly(anomaly_name:StringName):
+	selected_anomaly = anomaly_name
 	_apply_anomaly_sync(anomaly_name, {})
 
 func _input(event: InputEvent) -> void:
